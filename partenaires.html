@@ -31,54 +31,58 @@ body{font-family:var(--font);background:var(--blanc);color:#1a1a2e;line-height:1
 .nav__burger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
 .nav__burger.open span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
 
-/* MENU PLEIN ÉCRAN — épuré */
-.m2{position:fixed;inset:0;z-index:1001;background:#020d18;opacity:0;pointer-events:none;transition:opacity .55s cubic-bezier(.65,0,.35,1);overflow-y:auto}
-.m2::before{content:"";position:absolute;inset:0;background:radial-gradient(120% 80% at 85% 0%,rgba(46,163,242,.14),transparent 55%),radial-gradient(80% 60% at 0% 100%,rgba(139,102,75,.12),transparent 60%);pointer-events:none}
+/* MENU PLEIN ÉCRAN — visuel */
+.m2{position:fixed;inset:0;z-index:1001;background:#020d18;opacity:0;pointer-events:none;transition:opacity .5s cubic-bezier(.65,0,.35,1)}
+.m2::before{content:"";position:absolute;inset:0;background:radial-gradient(120% 80% at 85% 0%,rgba(46,163,242,.16),transparent 55%),radial-gradient(90% 70% at 0% 100%,rgba(139,102,75,.14),transparent 60%);pointer-events:none}
 .m2.open{opacity:1;pointer-events:all}
-.m2__inner{position:relative;z-index:2;min-height:100%;max-width:1100px;margin:0 auto;padding:40px 56px 48px;display:flex;flex-direction:column}
-.m2__head{display:flex;align-items:center;height:48px;flex-shrink:0}
+.m2__inner{position:relative;z-index:2;height:100vh;height:100dvh;max-width:1180px;margin:0 auto;padding:28px 56px;display:flex;flex-direction:column;overflow:hidden}
+.m2__head{display:flex;align-items:center;height:44px;flex-shrink:0}
 .m2__brand{font-size:13px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.45)}
 .m2__brand span{color:var(--bleu-clair)}
-.m2__close{position:fixed;top:30px;right:48px;z-index:3;width:48px;height:48px;background:none;border:1px solid rgba(255,255,255,.18);border-radius:50%;cursor:pointer;transition:border-color .3s,transform .4s cubic-bezier(.65,0,.35,1)}
-.m2__close span{position:absolute;top:50%;left:50%;width:17px;height:1.5px;background:#fff;border-radius:2px}
+.m2__close{position:fixed;top:26px;right:48px;z-index:3;width:46px;height:46px;background:none;border:1px solid rgba(255,255,255,.18);border-radius:50%;cursor:pointer;transition:border-color .3s,transform .4s cubic-bezier(.65,0,.35,1)}
+.m2__close span{position:absolute;top:50%;left:50%;width:16px;height:1.5px;background:#fff;border-radius:2px}
 .m2__close span:nth-child(1){transform:translate(-50%,-50%) rotate(45deg)}
 .m2__close span:nth-child(2){transform:translate(-50%,-50%) rotate(-45deg)}
 .m2__close:hover{border-color:var(--bleu-clair);transform:rotate(90deg)}
-.m2__nav{flex:1;display:flex;flex-direction:column;justify-content:center;padding:40px 0}
-.m2__link{display:flex;align-items:center;gap:28px;padding:18px 0;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.08);opacity:0;transform:translateY(28px);transition:opacity .6s cubic-bezier(.65,0,.35,1),transform .6s cubic-bezier(.65,0,.35,1),border-color .3s}
-.m2.open .m2__link{opacity:1;transform:translateY(0)}
-.m2.open .m2__link:nth-child(1){transition-delay:.08s}
-.m2.open .m2__link:nth-child(2){transition-delay:.13s}
-.m2.open .m2__link:nth-child(3){transition-delay:.18s}
-.m2.open .m2__link:nth-child(4){transition-delay:.23s}
-.m2.open .m2__link:nth-child(5){transition-delay:.28s}
-.m2.open .m2__link:nth-child(6){transition-delay:.33s}
-.m2.open .m2__link:nth-child(7){transition-delay:.38s}
-.m2__num{font-size:13px;font-weight:600;letter-spacing:1px;color:rgba(255,255,255,.3);width:34px;flex-shrink:0;transition:color .3s}
-.m2__txt{font-size:clamp(30px,5.2vw,60px);font-weight:600;letter-spacing:-1.5px;text-transform:uppercase;color:rgba(255,255,255,.88);line-height:1;transition:color .3s,transform .4s cubic-bezier(.65,0,.35,1)}
-.m2__arw{margin-left:auto;font-size:26px;color:var(--bleu-clair);opacity:0;transform:translateX(-16px);transition:opacity .3s,transform .35s cubic-bezier(.65,0,.35,1)}
-.m2__link:hover{border-color:rgba(46,163,242,.45)}
-.m2__link:hover .m2__num{color:var(--bleu-clair)}
-.m2__link:hover .m2__txt{color:#fff;transform:translateX(20px)}
-.m2__link:hover .m2__arw{opacity:1;transform:translateX(0)}
-.m2__foot{flex-shrink:0;display:flex;flex-direction:column;gap:22px;opacity:0;transition:opacity .5s .55s}
+.m2__grid{flex:1;min-height:0;display:flex;flex-wrap:wrap;align-content:center;justify-content:center;gap:18px;padding:24px 0}
+.m2__card{position:relative;flex:0 1 calc(25% - 18px);min-width:200px;display:flex;flex-direction:column;justify-content:space-between;gap:28px;padding:26px;border:1px solid rgba(255,255,255,.1);border-radius:18px;background:rgba(255,255,255,.035);text-decoration:none;overflow:hidden;opacity:0;transform:translateY(26px);transition:opacity .55s cubic-bezier(.65,0,.35,1),transform .55s cubic-bezier(.65,0,.35,1),background .3s,border-color .3s}
+.m2.open .m2__card{opacity:1;transform:translateY(0)}
+.m2.open .m2__card:nth-child(1){transition-delay:.06s}
+.m2.open .m2__card:nth-child(2){transition-delay:.11s}
+.m2.open .m2__card:nth-child(3){transition-delay:.16s}
+.m2.open .m2__card:nth-child(4){transition-delay:.21s}
+.m2.open .m2__card:nth-child(5){transition-delay:.26s}
+.m2.open .m2__card:nth-child(6){transition-delay:.31s}
+.m2.open .m2__card:nth-child(7){transition-delay:.36s}
+.m2__card:hover{background:rgba(46,163,242,.12);border-color:rgba(46,163,242,.5);transform:translateY(-5px)}
+.m2__card-num{position:absolute;top:18px;right:20px;font-size:12px;font-weight:600;letter-spacing:1px;color:rgba(255,255,255,.28)}
+.m2__card-ico{font-size:38px;color:var(--bleu-clair);line-height:1;transition:transform .35s cubic-bezier(.65,0,.35,1)}
+.m2__card:hover .m2__card-ico{transform:scale(1.12)}
+.m2__card-label{font-size:19px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:#fff}
+.m2__card-arw{position:absolute;bottom:22px;right:22px;font-size:20px;color:var(--bleu-clair);opacity:0;transform:translate(-6px,6px);transition:opacity .3s,transform .3s}
+.m2__card:hover .m2__card-arw{opacity:1;transform:translate(0,0)}
+.m2__foot{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;gap:20px 32px;flex-wrap:wrap;padding-top:20px;border-top:1px solid rgba(255,255,255,.08);opacity:0;transition:opacity .5s .5s}
 .m2.open .m2__foot{opacity:1}
-.m2__sec{display:flex;flex-wrap:wrap;gap:12px 28px;padding-bottom:22px;border-bottom:1px solid rgba(255,255,255,.08)}
-.m2__sec a{font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.4);text-decoration:none;transition:color .2s}
-.m2__sec a:hover{color:var(--bleu-clair)}
-.m2__contact{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
-.m2__mail{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:500;color:rgba(255,255,255,.55);text-decoration:none;transition:color .2s}
+.m2__sec{display:flex;flex-wrap:wrap;gap:10px 24px}
+.m2__sec a{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s}
+.m2__sec a i{font-size:16px;color:var(--bleu-clair)}
+.m2__sec a:hover{color:#fff}
+.m2__contact{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.m2__mail{display:flex;align-items:center;gap:9px;font-size:13px;font-weight:500;color:rgba(255,255,255,.55);text-decoration:none;transition:color .2s}
 .m2__mail:hover{color:#fff}
-.m2__social{display:flex;gap:12px}
-.m2__social a{width:42px;height:42px;border:1px solid rgba(255,255,255,.16);border-radius:50%;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.6);font-size:18px;text-decoration:none;transition:all .25s}
+.m2__social{display:flex;gap:10px}
+.m2__social a{width:38px;height:38px;border:1px solid rgba(255,255,255,.16);border-radius:50%;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.6);font-size:17px;text-decoration:none;transition:all .25s}
 .m2__social a:hover{background:var(--bleu-clair);border-color:var(--bleu-clair);color:#fff}
-@media(max-width:768px){
-  .m2__inner{padding:26px 22px 32px}
-  .m2__close{top:18px;right:18px;width:42px;height:42px}
-  .m2__link{gap:16px;padding:14px 0}
-  .m2__num{width:24px;font-size:11px}
-  .m2__arw{display:none}
-  .m2__contact{flex-direction:column;align-items:flex-start;gap:16px}
+@media(max-width:1024px){.m2__card{flex:0 1 calc(33.333% - 18px)}}
+@media(max-width:760px){
+  .m2__inner{padding:22px}
+  .m2__close{top:16px;right:16px;width:42px;height:42px}
+  .m2__grid{gap:12px;padding:14px 0}
+  .m2__card{flex:0 1 calc(50% - 12px);min-width:0;gap:16px;padding:18px;border-radius:14px}
+  .m2__card-ico{font-size:30px}
+  .m2__card-label{font-size:15px}
+  .m2__card-arw{display:none}
+  .m2__foot{flex-direction:column;align-items:flex-start;gap:14px}
 }
 
 /* ── HERO ── */
@@ -508,22 +512,21 @@ body{font-family:var(--font);background:var(--blanc);color:#1a1a2e;line-height:1
 <div class="menu-overlay m2" id="menuOverlay">
   <button class="m2__close" id="menuClose" aria-label="Fermer le menu"><span></span><span></span></button>
   <div class="m2__inner">
-    <div class="m2__head"><span class="m2__brand">US<span>T</span> — Toulouse</span></div>
-    <nav class="m2__nav">
-      <a class="m2__link" href="/"><span class="m2__num">01</span><span class="m2__txt">Accueil</span><i class="ti ti-arrow-right m2__arw"></i></a>
-      <a class="m2__link" href="/association-sportive"><span class="m2__num">02</span><span class="m2__txt">Le Club</span><i class="ti ti-arrow-right m2__arw"></i></a>
-      <a class="m2__link" href="/football"><span class="m2__num">03</span><span class="m2__txt">Football</span><i class="ti ti-arrow-right m2__arw"></i></a>
-      <a class="m2__link" href="/randonnee"><span class="m2__num">04</span><span class="m2__txt">Randonn&#233;e</span><i class="ti ti-arrow-right m2__arw"></i></a>
-      <a class="m2__link" href="/padel"><span class="m2__num">05</span><span class="m2__txt">Padel</span><i class="ti ti-arrow-right m2__arw"></i></a>
-      <a class="m2__link" href="/partenaires"><span class="m2__num">06</span><span class="m2__txt">Partenaires</span><i class="ti ti-arrow-right m2__arw"></i></a>
-      <a class="m2__link" href="/contact"><span class="m2__num">07</span><span class="m2__txt">Contact</span><i class="ti ti-arrow-right m2__arw"></i></a>
+    <div class="m2__head"><span class="m2__brand">US<span>T</span> &mdash; Toulouse</span></div>
+    <nav class="m2__grid">
+      <a class="m2__card" href="/"><span class="m2__card-num">01</span><span class="m2__card-ico"><i class="ti ti-home-2"></i></span><span class="m2__card-label">Accueil</span><i class="ti ti-arrow-up-right m2__card-arw"></i></a>
+      <a class="m2__card" href="/association-sportive"><span class="m2__card-num">02</span><span class="m2__card-ico"><i class="ti ti-shield"></i></span><span class="m2__card-label">Le Club</span><i class="ti ti-arrow-up-right m2__card-arw"></i></a>
+      <a class="m2__card" href="/football"><span class="m2__card-num">03</span><span class="m2__card-ico"><i class="ti ti-ball-football"></i></span><span class="m2__card-label">Football</span><i class="ti ti-arrow-up-right m2__card-arw"></i></a>
+      <a class="m2__card" href="/randonnee"><span class="m2__card-num">04</span><span class="m2__card-ico"><i class="ti ti-mountain"></i></span><span class="m2__card-label">Randonn&#233;e</span><i class="ti ti-arrow-up-right m2__card-arw"></i></a>
+      <a class="m2__card" href="/padel"><span class="m2__card-num">05</span><span class="m2__card-ico"><i class="ti ti-ball-tennis"></i></span><span class="m2__card-label">Padel</span><i class="ti ti-arrow-up-right m2__card-arw"></i></a>
+      <a class="m2__card" href="/partenaires"><span class="m2__card-num">06</span><span class="m2__card-ico"><i class="ti ti-heart-handshake"></i></span><span class="m2__card-label">Partenaires</span><i class="ti ti-arrow-up-right m2__card-arw"></i></a>
+      <a class="m2__card" href="/contact"><span class="m2__card-num">07</span><span class="m2__card-ico"><i class="ti ti-mail"></i></span><span class="m2__card-label">Contact</span><i class="ti ti-arrow-up-right m2__card-arw"></i></a>
     </nav>
     <div class="m2__foot">
       <div class="m2__sec">
-        <a href="/samih-bentaha">Samih Bentaha</a>
-        <a href="/actualites">Actualit&#233;s</a>
-        <a href="/espace-membre">Espace membre</a>
-        <a href="/boutique">Boutique</a>
+        <a href="/actualites"><i class="ti ti-news"></i> Actualit&#233;s</a>
+        <a href="/espace-membre"><i class="ti ti-user-circle"></i> Espace membre</a>
+        <a href="/boutique"><i class="ti ti-shopping-bag"></i> Boutique</a>
       </div>
       <div class="m2__contact">
         <a href="mailto:contact@ustoulouse.com" class="m2__mail"><i class="ti ti-mail"></i> contact@ustoulouse.com</a>
