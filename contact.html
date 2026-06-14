@@ -537,12 +537,17 @@ document.querySelectorAll('.part-popup-overlay').forEach(function(p){
   p.addEventListener('click',function(e){if(e.target===p) window.closePartPopup();});
 });
 
-document.querySelectorAll('.faq-question').forEach(function(q){
-  q.addEventListener('click',function(){
-    var item=q.parentElement;
-    var wasOpen=item.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach(function(i){i.classList.remove('open');});
-    if(!wasOpen) item.classList.add('open');
+(function(){
+  var items = Array.from(document.querySelectorAll('.faq-item'));
+  items.forEach(function(item, idx){
+    item.querySelector('.faq-question').addEventListener('click', function(){
+      var wasOpen = item.classList.contains('open');
+      // Close only items in the same column (same parity index)
+      items.forEach(function(other, i){
+        if(i % 2 === idx % 2) other.classList.remove('open');
+      });
+      if(!wasOpen) item.classList.add('open');
+    });
   });
-});
+})();
 </script></body></html>
