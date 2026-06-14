@@ -485,6 +485,25 @@ body{font-family:var(--font);background:var(--blanc);color:#1a1a2e;line-height:1
 @keyframes spin{to{transform:rotate(360deg)}}
 .payment-error{color:#dc2626;font-size:13px;margin-bottom:10px;display:none}
 .hp-field{position:absolute;left:-9999px;opacity:0;pointer-events:none}
+
+/* ── NETTOYAGE MOBILE ── */
+html,body{overflow-x:hidden}
+img{max-width:100%}
+@media(max-width:768px){
+  .ust-nav{padding:0 20px}
+  .nav{padding:0 20px}
+  .wrap{padding:0 20px}
+  .sec{padding:72px 0}
+}
+@media(max-width:480px){
+  .sec{padding:56px 0}
+  .staff-grid{grid-template-columns:1fr 1fr}
+  .events-grid{grid-template-columns:1fr}
+  .footer__grid{grid-template-columns:1fr}
+  .chiffres{grid-template-columns:1fr 1fr}
+  .part-grid{grid-template-columns:1fr}
+  .h2{letter-spacing:-.5px}
+}
 </style>
 <script src="https://js.stripe.com/v3/"></script>
 </head>
