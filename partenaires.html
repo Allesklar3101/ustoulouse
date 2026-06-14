@@ -518,11 +518,20 @@ img{max-width:100%}
 @media(max-width:768px){
   .ust-nav{padding:0 20px}
   .nav{padding:0 20px}
-  .wrap{width:95%;padding:0}
+  .wrap{width:90%;padding:0}
   .sec{padding:72px 0}
+  .hero__titre{font-size:clamp(40px,12vw,68px);letter-spacing:-1px}
+  .hero__eyebrow{letter-spacing:2px;font-size:10px;flex-wrap:wrap}
+  .competitions-tabs{flex-wrap:nowrap!important;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:8px;scrollbar-width:none}
+  .competitions-tabs::-webkit-scrollbar{display:none}
+  .popup{grid-template-columns:1fr!important;width:92vw!important;max-width:100%!important;overflow-y:auto}
+  .popup__left{border-radius:var(--radius-lg) var(--radius-lg) 0 0!important}
+  .dp-modal{grid-template-columns:1fr!important;overflow-y:auto}
+  .dp-modal__header{border-radius:20px 20px 0 0!important;overflow-y:visible}
+  .part-popup{max-height:90vh;overflow-y:auto}
 }
 @media(max-width:480px){
-  .wrap{width:95%;padding:0}
+  .wrap{width:90%;padding:0}
   .sec{padding:56px 0}
   .staff-grid{grid-template-columns:1fr 1fr}
   .events-grid{grid-template-columns:1fr}
