@@ -31,37 +31,53 @@ body{font-family:var(--font);background:var(--blanc);color:#1a1a2e;line-height:1
 .nav__burger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
 .nav__burger.open span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
 
-/* MENU PLEIN ÉCRAN — visuel */
+/* MENU PLEIN ÉCRAN — éditorial */
 .m2{position:fixed;inset:0;z-index:1001;background:#020d18;opacity:0;pointer-events:none;transition:opacity .5s cubic-bezier(.65,0,.35,1)}
-.m2::before{content:"";position:absolute;inset:0;background:radial-gradient(120% 80% at 85% 0%,rgba(46,163,242,.16),transparent 55%),radial-gradient(90% 70% at 0% 100%,rgba(139,102,75,.14),transparent 60%);pointer-events:none}
+.m2::before{content:"";position:absolute;inset:0;background:radial-gradient(120% 80% at 88% 5%,rgba(46,163,242,.18),transparent 52%),radial-gradient(90% 70% at 0% 100%,rgba(139,102,75,.14),transparent 60%);pointer-events:none}
 .m2.open{opacity:1;pointer-events:all}
-.m2__inner{position:relative;z-index:2;height:100vh;height:100dvh;max-width:1180px;margin:0 auto;padding:28px 56px;display:flex;flex-direction:column;overflow:hidden}
-.m2__head{display:flex;align-items:center;height:44px;flex-shrink:0}
+.m2__inner{position:relative;z-index:2;height:100vh;height:100dvh;max-width:1200px;margin:0 auto;padding:26px 56px;display:flex;flex-direction:column;overflow:hidden}
+.m2__head{display:flex;align-items:center;height:42px;flex-shrink:0}
 .m2__brand{font-size:13px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.45)}
 .m2__brand span{color:var(--bleu-clair)}
-.m2__close{position:fixed;top:26px;right:48px;z-index:3;width:46px;height:46px;background:none;border:1px solid rgba(255,255,255,.18);border-radius:50%;cursor:pointer;transition:border-color .3s,transform .4s cubic-bezier(.65,0,.35,1)}
+.m2__close{position:fixed;top:24px;right:48px;z-index:3;width:46px;height:46px;background:none;border:1px solid rgba(255,255,255,.18);border-radius:50%;cursor:pointer;transition:border-color .3s,transform .4s cubic-bezier(.65,0,.35,1)}
 .m2__close span{position:absolute;top:50%;left:50%;width:16px;height:1.5px;background:#fff;border-radius:2px}
 .m2__close span:nth-child(1){transform:translate(-50%,-50%) rotate(45deg)}
 .m2__close span:nth-child(2){transform:translate(-50%,-50%) rotate(-45deg)}
 .m2__close:hover{border-color:var(--bleu-clair);transform:rotate(90deg)}
-.m2__grid{flex:1;min-height:0;display:flex;flex-wrap:wrap;align-content:center;justify-content:center;gap:18px;padding:24px 0}
-.m2__card{position:relative;flex:0 1 calc(25% - 18px);min-width:200px;display:flex;flex-direction:column;justify-content:space-between;gap:28px;padding:26px;border:1px solid rgba(255,255,255,.1);border-radius:18px;background:rgba(255,255,255,.035);text-decoration:none;overflow:hidden;opacity:0;transform:translateY(26px);transition:opacity .55s cubic-bezier(.65,0,.35,1),transform .55s cubic-bezier(.65,0,.35,1),background .3s,border-color .3s}
-.m2.open .m2__card{opacity:1;transform:translateY(0)}
-.m2.open .m2__card:nth-child(1){transition-delay:.06s}
-.m2.open .m2__card:nth-child(2){transition-delay:.11s}
-.m2.open .m2__card:nth-child(3){transition-delay:.16s}
-.m2.open .m2__card:nth-child(4){transition-delay:.21s}
-.m2.open .m2__card:nth-child(5){transition-delay:.26s}
-.m2.open .m2__card:nth-child(6){transition-delay:.31s}
-.m2.open .m2__card:nth-child(7){transition-delay:.36s}
-.m2__card:hover{background:rgba(46,163,242,.12);border-color:rgba(46,163,242,.5);transform:translateY(-5px)}
-.m2__card-num{position:absolute;top:18px;right:20px;font-size:12px;font-weight:600;letter-spacing:1px;color:rgba(255,255,255,.28)}
-.m2__card-ico{font-size:38px;color:var(--bleu-clair);line-height:1;transition:transform .35s cubic-bezier(.65,0,.35,1)}
-.m2__card:hover .m2__card-ico{transform:scale(1.12)}
-.m2__card-label{font-size:19px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:#fff}
-.m2__card-arw{position:absolute;bottom:22px;right:22px;font-size:20px;color:var(--bleu-clair);opacity:0;transform:translate(-6px,6px);transition:opacity .3s,transform .3s}
-.m2__card:hover .m2__card-arw{opacity:1;transform:translate(0,0)}
-.m2__foot{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;gap:20px 32px;flex-wrap:wrap;padding-top:20px;border-top:1px solid rgba(255,255,255,.08);opacity:0;transition:opacity .5s .5s}
+.m2__body{flex:1;min-height:0;display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;padding:20px 0}
+.m2__list{display:flex;flex-direction:column}
+.m2__row{display:flex;align-items:center;gap:22px;padding:13px 0;border-bottom:1px solid rgba(255,255,255,.08);text-decoration:none;opacity:0;transform:translateX(-26px);transition:opacity .55s cubic-bezier(.65,0,.35,1),transform .55s cubic-bezier(.65,0,.35,1),border-color .3s}
+.m2.open .m2__row{opacity:1;transform:translateX(0)}
+.m2.open .m2__row:nth-child(1){transition-delay:.06s}
+.m2.open .m2__row:nth-child(2){transition-delay:.10s}
+.m2.open .m2__row:nth-child(3){transition-delay:.14s}
+.m2.open .m2__row:nth-child(4){transition-delay:.18s}
+.m2.open .m2__row:nth-child(5){transition-delay:.22s}
+.m2.open .m2__row:nth-child(6){transition-delay:.26s}
+.m2.open .m2__row:nth-child(7){transition-delay:.30s}
+.m2__row-num{font-size:12px;font-weight:600;letter-spacing:1px;color:rgba(255,255,255,.3);width:26px;flex-shrink:0;transition:color .3s}
+.m2__row-ico{width:42px;height:42px;flex-shrink:0;border-radius:12px;background:rgba(255,255,255,.05);display:flex;align-items:center;justify-content:center;font-size:20px;color:rgba(255,255,255,.65);transition:all .3s}
+.m2__row-name{font-size:clamp(24px,3.2vw,42px);font-weight:700;text-transform:uppercase;letter-spacing:-1px;color:rgba(255,255,255,.82);line-height:1;transition:color .3s,transform .4s cubic-bezier(.65,0,.35,1)}
+.m2__row-arw{margin-left:auto;font-size:22px;color:var(--bleu-clair);opacity:0;transform:translateX(-12px);transition:opacity .3s,transform .35s cubic-bezier(.65,0,.35,1)}
+.m2__row:hover .m2__row-name,.m2__row.active .m2__row-name{color:#fff;transform:translateX(10px)}
+.m2__row:hover .m2__row-num,.m2__row.active .m2__row-num{color:var(--bleu-clair)}
+.m2__row:hover .m2__row-ico,.m2__row.active .m2__row-ico{background:rgba(46,163,242,.16);color:var(--bleu-clair)}
+.m2__row:hover .m2__row-arw,.m2__row.active .m2__row-arw{opacity:1;transform:translateX(0)}
+.m2__row:hover,.m2__row.active{border-color:rgba(46,163,242,.4)}
+.m2__preview{position:relative;border:1px solid rgba(255,255,255,.1);border-radius:26px;background:linear-gradient(160deg,rgba(46,163,242,.13),rgba(6,78,137,.04));padding:46px 42px;display:flex;flex-direction:column;gap:26px;min-height:330px;overflow:hidden;opacity:0;transform:translateY(22px);transition:opacity .6s .2s cubic-bezier(.65,0,.35,1),transform .6s .2s cubic-bezier(.65,0,.35,1)}
+.m2.open .m2__preview{opacity:1;transform:translateY(0)}
+.m2__preview::after{content:"";position:absolute;top:-40%;right:-30%;width:80%;height:80%;background:radial-gradient(circle,rgba(46,163,242,.22),transparent 65%);pointer-events:none}
+.m2__pv-ico{position:relative;z-index:1;width:88px;height:88px;border-radius:22px;background:rgba(46,163,242,.15);display:flex;align-items:center;justify-content:center;font-size:44px;color:var(--bleu-clair)}
+.m2__pv-text{position:relative;z-index:1}
+.m2__pv-k{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--brun-clair);margin-bottom:10px}
+.m2__pv-title{font-size:clamp(26px,2.6vw,34px);font-weight:800;text-transform:uppercase;color:#fff;letter-spacing:-.5px;margin-bottom:12px}
+.m2__pv-desc{font-size:15px;line-height:1.7;color:rgba(255,255,255,.6);max-width:330px}
+.m2__pv-cta{position:relative;z-index:1;margin-top:auto;display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--bleu-clair)}
+.m2__preview--in .m2__pv-ico{animation:m2pop .45s cubic-bezier(.34,1.56,.64,1)}
+.m2__preview--in .m2__pv-text{animation:m2fade .45s ease}
+@keyframes m2pop{0%{transform:scale(.85);opacity:.4}100%{transform:scale(1);opacity:1}}
+@keyframes m2fade{0%{transform:translateY(8px);opacity:0}100%{transform:translateY(0);opacity:1}}
+.m2__foot{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;gap:18px 32px;flex-wrap:wrap;padding-top:18px;border-top:1px solid rgba(255,255,255,.08);opacity:0;transition:opacity .5s .5s}
 .m2.open .m2__foot{opacity:1}
 .m2__sec{display:flex;flex-wrap:wrap;gap:10px 24px}
 .m2__sec a{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s}
@@ -73,15 +89,13 @@ body{font-family:var(--font);background:var(--blanc);color:#1a1a2e;line-height:1
 .m2__social{display:flex;gap:10px}
 .m2__social a{width:38px;height:38px;border:1px solid rgba(255,255,255,.16);border-radius:50%;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.6);font-size:17px;text-decoration:none;transition:all .25s}
 .m2__social a:hover{background:var(--bleu-clair);border-color:var(--bleu-clair);color:#fff}
-@media(max-width:1024px){.m2__card{flex:0 1 calc(33.333% - 18px)}}
-@media(max-width:760px){
+@media(max-width:900px){
   .m2__inner{padding:22px}
   .m2__close{top:16px;right:16px;width:42px;height:42px}
-  .m2__grid{gap:12px;padding:14px 0}
-  .m2__card{flex:0 1 calc(50% - 12px);min-width:0;gap:16px;padding:18px;border-radius:14px}
-  .m2__card-ico{font-size:30px}
-  .m2__card-label{font-size:15px}
-  .m2__card-arw{display:none}
+  .m2__body{grid-template-columns:1fr;gap:0;align-content:center}
+  .m2__preview{display:none}
+  .m2__row{padding:15px 0;gap:16px}
+  .m2__row-arw{display:none}
   .m2__foot{flex-direction:column;align-items:flex-start;gap:14px}
 }
 
@@ -510,21 +524,32 @@ body{font-family:var(--font);background:var(--blanc);color:#1a1a2e;line-height:1
 </nav>
 
 <div class="menu-overlay m2" id="menuOverlay">
-  <button class="m2__close" id="menuClose" aria-label="Fermer le menu"><span></span><span></span></button>
+    <button class="m2__close" id="menuClose" aria-label="Fermer le menu"><span></span><span></span></button>
   <div class="m2__inner">
     <div class="m2__head"><span class="m2__brand">US<span>T</span> &mdash; Toulouse</span></div>
-    <nav class="m2__grid">
-      <a class="m2__card" href="/"><span class="m2__card-num">01</span><span class="m2__card-ico"><i class="ti ti-home-2"></i></span><span class="m2__card-label">Accueil</span><i class="ti ti-arrow-up-right m2__card-arw"></i></a>
-      <a class="m2__card" href="/association-sportive"><span class="m2__card-num">02</span><span class="m2__card-ico"><i class="ti ti-shield"></i></span><span class="m2__card-label">Le Club</span><i class="ti ti-arrow-up-right m2__card-arw"></i></a>
-      <a class="m2__card" href="/football"><span class="m2__card-num">03</span><span class="m2__card-ico"><i class="ti ti-ball-football"></i></span><span class="m2__card-label">Football</span><i class="ti ti-arrow-up-right m2__card-arw"></i></a>
-      <a class="m2__card" href="/randonnee"><span class="m2__card-num">04</span><span class="m2__card-ico"><i class="ti ti-mountain"></i></span><span class="m2__card-label">Randonn&#233;e</span><i class="ti ti-arrow-up-right m2__card-arw"></i></a>
-      <a class="m2__card" href="/padel"><span class="m2__card-num">05</span><span class="m2__card-ico"><i class="ti ti-ball-tennis"></i></span><span class="m2__card-label">Padel</span><i class="ti ti-arrow-up-right m2__card-arw"></i></a>
-      <a class="m2__card" href="/partenaires"><span class="m2__card-num">06</span><span class="m2__card-ico"><i class="ti ti-heart-handshake"></i></span><span class="m2__card-label">Partenaires</span><i class="ti ti-arrow-up-right m2__card-arw"></i></a>
-      <a class="m2__card" href="/contact"><span class="m2__card-num">07</span><span class="m2__card-ico"><i class="ti ti-mail"></i></span><span class="m2__card-label">Contact</span><i class="ti ti-arrow-up-right m2__card-arw"></i></a>
-    </nav>
+    <div class="m2__body">
+      <nav class="m2__list">
+        <a class="m2__row" href="/" data-ico="ti-home-2" data-title="Accueil" data-desc="Retour à la page d'accueil du club"><span class="m2__row-num">01</span><span class="m2__row-ico"><i class="ti ti-home-2"></i></span><span class="m2__row-name">Accueil</span><i class="ti ti-arrow-up-right m2__row-arw"></i></a>
+        <a class="m2__row" href="/association-sportive" data-ico="ti-shield" data-title="Le Club" data-desc="Histoire, valeurs et équipe dirigeante"><span class="m2__row-num">02</span><span class="m2__row-ico"><i class="ti ti-shield"></i></span><span class="m2__row-name">Le Club</span><i class="ti ti-arrow-up-right m2__row-arw"></i></a>
+        <a class="m2__row" href="/football" data-ico="ti-ball-football" data-title="Football" data-desc="Nos équipes, du loisir à la compétition"><span class="m2__row-num">03</span><span class="m2__row-ico"><i class="ti ti-ball-football"></i></span><span class="m2__row-name">Football</span><i class="ti ti-arrow-up-right m2__row-arw"></i></a>
+        <a class="m2__row" href="/randonnee" data-ico="ti-mountain" data-title="Randonnée" data-desc="Sorties nature et montagne toute l'année"><span class="m2__row-num">04</span><span class="m2__row-ico"><i class="ti ti-mountain"></i></span><span class="m2__row-name">Randonnée</span><i class="ti ti-arrow-up-right m2__row-arw"></i></a>
+        <a class="m2__row" href="/padel" data-ico="ti-ball-tennis" data-title="Padel" data-desc="Réservez nos terrains et nos tournois"><span class="m2__row-num">05</span><span class="m2__row-ico"><i class="ti ti-ball-tennis"></i></span><span class="m2__row-name">Padel</span><i class="ti ti-arrow-up-right m2__row-arw"></i></a>
+        <a class="m2__row" href="/partenaires" data-ico="ti-heart-handshake" data-title="Partenaires" data-desc="Ils soutiennent l'US Toulouse au quotidien"><span class="m2__row-num">06</span><span class="m2__row-ico"><i class="ti ti-heart-handshake"></i></span><span class="m2__row-name">Partenaires</span><i class="ti ti-arrow-up-right m2__row-arw"></i></a>
+        <a class="m2__row" href="/contact" data-ico="ti-mail" data-title="Contact" data-desc="Une question ? Écrivez-nous"><span class="m2__row-num">07</span><span class="m2__row-ico"><i class="ti ti-mail"></i></span><span class="m2__row-name">Contact</span><i class="ti ti-arrow-up-right m2__row-arw"></i></a>
+      </nav>
+      <aside class="m2__preview" id="m2Preview">
+        <div class="m2__pv-ico"><i class="ti ti-home-2"></i></div>
+        <div class="m2__pv-text">
+          <p class="m2__pv-k">Explorer</p>
+          <h3 class="m2__pv-title">Accueil</h3>
+          <p class="m2__pv-desc">Retour à la page d'accueil du club</p>
+        </div>
+        <span class="m2__pv-cta">Découvrir <i class="ti ti-arrow-right"></i></span>
+      </aside>
+    </div>
     <div class="m2__foot">
       <div class="m2__sec">
-        <a href="/actualites"><i class="ti ti-news"></i> Actualit&#233;s</a>
+        <a href="/actualites"><i class="ti ti-news"></i> Actualités</a>
         <a href="/espace-membre"><i class="ti ti-user-circle"></i> Espace membre</a>
         <a href="/boutique"><i class="ti ti-shopping-bag"></i> Boutique</a>
       </div>
@@ -721,5 +746,28 @@ window.sendDevenirPartenaire = function(e) {
       btn.innerHTML = '<i class="ti ti-send"></i> Envoyer ma demande';
     });
 };
+</script>
+<script>
+(function(){
+  var prev=document.getElementById('m2Preview');
+  if(!prev) return;
+  var rows=document.querySelectorAll('.m2__row');
+  var ico=prev.querySelector('.m2__pv-ico i');
+  var ttl=prev.querySelector('.m2__pv-title');
+  var dsc=prev.querySelector('.m2__pv-desc');
+  function set(r){
+    rows.forEach(function(x){x.classList.remove('active');});
+    r.classList.add('active');
+    ico.className='ti '+r.getAttribute('data-ico');
+    ttl.textContent=r.getAttribute('data-title');
+    dsc.textContent=r.getAttribute('data-desc');
+    prev.classList.remove('m2__preview--in');void prev.offsetWidth;prev.classList.add('m2__preview--in');
+  }
+  rows.forEach(function(r){
+    r.addEventListener('mouseenter',function(){set(r);});
+    r.addEventListener('focus',function(){set(r);});
+  });
+  if(rows[0]) rows[0].classList.add('active');
+})();
 </script>
 </body></html>
