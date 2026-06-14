@@ -1037,7 +1037,6 @@ function switchComp(btn){
   var closeBtn = document.getElementById('menuClose');
   if(!burger || !menu) return;
 
-  // Nav scroll
   window.addEventListener('scroll', function(){
     if(nav) nav.classList.toggle('ust-nav--scrolled', window.scrollY > 40);
   }, {passive:true});
@@ -1046,100 +1045,61 @@ function switchComp(btn){
     menu.classList.add('open');
     burger.classList.add('open');
     burger.setAttribute('aria-expanded','true');
-    document.body.style.overflow = 'hidden';
+    document.body.style.overflow='hidden';
   }
   function closeMenu(){
     menu.classList.remove('open');
     burger.classList.remove('open');
     burger.setAttribute('aria-expanded','false');
-    document.body.style.overflow = '';
+    document.body.style.overflow='';
   }
-
   burger.addEventListener('click', openMenu);
   if(closeBtn) closeBtn.addEventListener('click', closeMenu);
-  menu.addEventListener('click', function(e){ if(e.target === menu) closeMenu(); });
-  document.addEventListener('keydown', function(e){
-    if(e.key === 'Escape') closeMenu();
-  });
+  menu.addEventListener('click', function(e){ if(e.target===menu) closeMenu(); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeMenu(); });
 
-  // Sous-menus
   window.toggleSub = function(btn){
-    var isOpen = btn.getAttribute('aria-expanded') === 'true';
-    // Ferme tous les autres
+    var isOpen = btn.getAttribute('aria-expanded')==='true';
     document.querySelectorAll('.ust-menu__link[aria-expanded="true"]').forEach(function(b){
-      if(b !== btn){
-        b.setAttribute('aria-expanded','false');
-        var s = b.parentElement.querySelector('.ust-menu__sub');
-        if(s) s.classList.remove('open');
-      }
+      if(b!==btn){ b.setAttribute('aria-expanded','false'); var s=b.parentElement.querySelector('.ust-menu__sub'); if(s) s.classList.remove('open'); }
     });
-    // Toggle celui-ci
-    btn.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
-    var sub = btn.parentElement.querySelector('.ust-menu__sub');
-    if(sub) sub.classList.toggle('open', !isOpen);
+    btn.setAttribute('aria-expanded', isOpen?'false':'true');
+    var sub=btn.parentElement.querySelector('.ust-menu__sub');
+    if(sub) sub.classList.toggle('open',!isOpen);
   };
-
-  // Popup inscription
-  window.openPopup = function openPopup(){document.getElementById('inscriptionPopup').classList.add('open');document.body.style.overflow='hidden';}
-  window.closePopup = function closePopup(){
-    document.getElementById('inscriptionPopup').classList.remove('open');
-    document.body.style.overflow='';
-    setTimeout(function(){
-      document.getElementById('popup-view-form').style.display='block';
-      document.getElementById('popup-view-confirm').style.display='none';
-      document.getElementById('inscriptionForm').reset();
-    },400);
-  }
-  window.submitInscription = function submitInscription(e){
-    e.preventDefault();
-    var f=document.getElementById('inscriptionForm');
-    var fields=[].slice.call(f.querySelectorAll('input,select,textarea'));
-    var lines=fields.filter(function(el){return el.name&&el.value;}).map(function(el){return el.name+': '+el.value;});
-    var subject=encodeURIComponent('Demande inscription Football UST — '+document.getElementById('insc-nom').value+' '+document.getElementById('insc-prenom').value);
-    var body=encodeURIComponent(lines.join('\n'));
-    window.location.href='mailto:recrutement@ustoulouse.com?subject='+subject+'&body='+body;
-    setTimeout(function(){
-      document.getElementById('popup-view-form').style.display='none';
-      var confirm=document.getElementById('popup-view-confirm');
-      confirm.style.display='flex';
-    },600);
-  }
-  window.switchComp = function switchComp(btn){
-    document.querySelectorAll('.comp-tab').forEach(function(t){t.classList.remove('active');});
-    btn.classList.add('active');
-  }
 })();
 
-  // Popup inscription
-  window.openPopup = function openPopup(){document.getElementById('inscriptionPopup').classList.add('open');document.body.style.overflow='hidden';}
-  window.closePopup = function closePopup(){
-    document.getElementById('inscriptionPopup').classList.remove('open');
-    document.body.style.overflow='';
-    setTimeout(function(){
-      document.getElementById('popup-view-form').style.display='block';
-      document.getElementById('popup-view-confirm').style.display='none';
-      document.getElementById('inscriptionForm').reset();
-    },400);
-  }
-  window.submitInscription = function submitInscription(e){
-    e.preventDefault();
-    var f=document.getElementById('inscriptionForm');
-    var fields=[].slice.call(f.querySelectorAll('input,select,textarea'));
-    var lines=fields.filter(function(el){return el.name&&el.value;}).map(function(el){return el.name+': '+el.value;});
-    var subject=encodeURIComponent('Demande inscription Football UST — '+document.getElementById('insc-nom').value+' '+document.getElementById('insc-prenom').value);
-    var body=encodeURIComponent(lines.join('\n'));
-    window.location.href='mailto:recrutement@ustoulouse.com?subject='+subject+'&body='+body;
-    setTimeout(function(){
-      document.getElementById('popup-view-form').style.display='none';
-      var confirm=document.getElementById('popup-view-confirm');
-      confirm.style.display='flex';
-    },600);
-  }
-  window.switchComp = function switchComp(btn){
-    document.querySelectorAll('.comp-tab').forEach(function(t){t.classList.remove('active');});
-    btn.classList.add('active');
-  }
-});
+// Popup inscription
+window.openPopup = function(){
+  document.getElementById('inscriptionPopup').classList.add('open');
+  document.body.style.overflow='hidden';
+};
+window.closePopup = function(){
+  document.getElementById('inscriptionPopup').classList.remove('open');
+  document.body.style.overflow='';
+  setTimeout(function(){
+    document.getElementById('popup-view-form').style.display='block';
+    document.getElementById('popup-view-confirm').style.display='none';
+    document.getElementById('inscriptionForm').reset();
+  },400);
+};
+window.submitInscription = function(e){
+  e.preventDefault();
+  var f=document.getElementById('inscriptionForm');
+  var fields=[].slice.call(f.querySelectorAll('input,select,textarea'));
+  var lines=fields.filter(function(el){return el.name&&el.value;}).map(function(el){return el.name+': '+el.value;});
+  var subject=encodeURIComponent('Demande inscription Football UST — '+document.getElementById('insc-nom').value+' '+document.getElementById('insc-prenom').value);
+  var body=encodeURIComponent(lines.join('\n'));
+  window.location.href='mailto:recrutement@ustoulouse.com?subject='+subject+'&body='+body;
+  setTimeout(function(){
+    document.getElementById('popup-view-form').style.display='none';
+    document.getElementById('popup-view-confirm').style.display='flex';
+  },600);
+};
+window.switchComp = function(btn){
+  document.querySelectorAll('.comp-tab').forEach(function(t){t.classList.remove('active');});
+  btn.classList.add('active');
+};
 </script>
 
 </body></html>
