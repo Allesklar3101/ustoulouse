@@ -1080,8 +1080,8 @@ function switchComp(btn){
   };
 
   // Popup inscription
-  function openPopup(){document.getElementById('inscriptionPopup').classList.add('open');document.body.style.overflow='hidden';}
-  function closePopup(){
+  window.openPopup = function openPopup(){document.getElementById('inscriptionPopup').classList.add('open');document.body.style.overflow='hidden';}
+  window.closePopup = function closePopup(){
     document.getElementById('inscriptionPopup').classList.remove('open');
     document.body.style.overflow='';
     setTimeout(function(){
@@ -1090,7 +1090,7 @@ function switchComp(btn){
       document.getElementById('inscriptionForm').reset();
     },400);
   }
-  function submitInscription(e){
+  window.submitInscription = function submitInscription(e){
     e.preventDefault();
     var f=document.getElementById('inscriptionForm');
     var fields=[].slice.call(f.querySelectorAll('input,select,textarea'));
@@ -1104,15 +1104,15 @@ function switchComp(btn){
       confirm.style.display='flex';
     },600);
   }
-  function switchComp(btn){
+  window.switchComp = function switchComp(btn){
     document.querySelectorAll('.comp-tab').forEach(function(t){t.classList.remove('active');});
     btn.classList.add('active');
   }
 })();
 
   // Popup inscription
-  function openPopup(){document.getElementById('inscriptionPopup').classList.add('open');document.body.style.overflow='hidden';}
-  function closePopup(){
+  window.openPopup = function openPopup(){document.getElementById('inscriptionPopup').classList.add('open');document.body.style.overflow='hidden';}
+  window.closePopup = function closePopup(){
     document.getElementById('inscriptionPopup').classList.remove('open');
     document.body.style.overflow='';
     setTimeout(function(){
@@ -1121,7 +1121,7 @@ function switchComp(btn){
       document.getElementById('inscriptionForm').reset();
     },400);
   }
-  function submitInscription(e){
+  window.submitInscription = function submitInscription(e){
     e.preventDefault();
     var f=document.getElementById('inscriptionForm');
     var fields=[].slice.call(f.querySelectorAll('input,select,textarea'));
@@ -1135,7 +1135,7 @@ function switchComp(btn){
       confirm.style.display='flex';
     },600);
   }
-  function switchComp(btn){
+  window.switchComp = function switchComp(btn){
     document.querySelectorAll('.comp-tab').forEach(function(t){t.classList.remove('active');});
     btn.classList.add('active');
   }
