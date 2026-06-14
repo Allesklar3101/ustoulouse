@@ -510,7 +510,7 @@ body{font-family:var(--font);background:var(--blanc);color:#1a1a2e;line-height:1
 /* POPUP INSCRIPTION */
 .popup-overlay{display:none;position:fixed;inset:0;background:rgba(2,13,24,.85);z-index:2000;align-items:center;justify-content:center;padding:24px}
 .popup-overlay.open{display:flex}
-.popup{background:#fff;border-radius:var(--radius-lg);max-width:900px;width:100%;max-height:90vh;overflow-y:auto;display:grid;grid-template-columns:1fr 1fr;position:relative}
+.popup{background:#fff;border-radius:var(--radius-lg);width:80vw;max-width:1200px;max-height:90vh;overflow-y:auto;display:grid;grid-template-columns:1fr 1.6fr;position:relative}
 .popup__close{position:absolute;top:16px;right:20px;background:none;border:none;font-size:24px;cursor:pointer;color:#6b7280;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:background .2s}
 .popup__close:hover{background:var(--gris-bg);color:#1a1a2e}
 .popup__left{padding:48px 40px;background:var(--bleu);border-radius:var(--radius-lg) 0 0 var(--radius-lg);color:#fff}
@@ -536,6 +536,12 @@ body{font-family:var(--font);background:var(--blanc);color:#1a1a2e;line-height:1
 .popup__paiement-desc{font-size:12px;color:var(--gris-muted);line-height:1.5}
 .btn-submit{width:100%;padding:14px;background:var(--brun);color:#fff;border:none;border-radius:100px;font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;cursor:pointer;transition:opacity .2s}
 .btn-submit:hover{opacity:.88}
+/* POPUP STEPS */
+.popup-step{transition:opacity .3s,transform .3s}
+.popup-step.fade-out{opacity:0;transform:translateX(-20px)}
+.popup-step.fade-in{opacity:0;transform:translateX(20px)}
+.active-step{background:var(--brun) !important;color:#fff !important}
+
 
 @media(max-width:768px){
   .wrap{width:90%}
@@ -936,42 +942,45 @@ document.querySelectorAll('.tl-track').forEach(tl=>{
 <div class="popup-overlay" id="inscriptionPopup">
   <div class="popup">
     <button class="popup__close" onclick="closePopup()" aria-label="Fermer">&#x2715;</button>
+
     <!-- GAUCHE : étapes -->
     <div class="popup__left">
       <div class="popup__tag">US Toulouse — Football</div>
       <div class="popup__titre">Devenir<br>joueur</div>
-      <p style="font-size:13px;color:rgba(255,255,255,.6);line-height:1.7;margin-bottom:28px">Les inscriptions pour la saison 2025/2026 sont ouvertes. Places limitées !</p>
+      <p style="font-size:13px;color:rgba(255,255,255,.6);line-height:1.7;margin-bottom:32px">Les inscriptions pour la saison 2025/2026 sont ouvertes. Places limitées !</p>
       <div class="popup__etapes">
-        <div class="popup__etape">
-          <div class="popup__etape-num" id="step-num-1">1</div>
+        <div class="popup__etape" id="step-indicator-1">
+          <div class="popup__etape-num active-step">1</div>
           <div>
             <div class="popup__etape-titre">Demande d'inscription</div>
-            <div class="popup__etape-desc">Complète le formulaire avec tes informations personnelles et sportives. Il sera envoyé directement à notre service recrutement.</div>
+            <div class="popup__etape-desc">Remplis le formulaire avec tes informations personnelles et sportives.</div>
           </div>
         </div>
-        <div class="popup__etape">
-          <div class="popup__etape-num" id="step-num-2">2</div>
+        <div class="popup__etape" id="step-indicator-2">
+          <div class="popup__etape-num">2</div>
           <div>
             <div class="popup__etape-titre">Paiement en ligne</div>
-            <div class="popup__etape-desc">Règle la cotisation de 220€ en ligne via notre boutique sécurisée (Licence UST + FFF incluse).</div>
+            <div class="popup__etape-desc">Règle la cotisation de 220€ via notre boutique sécurisée (Licence UST + FFF).</div>
           </div>
         </div>
-        <div class="popup__etape">
-          <div class="popup__etape-num" id="step-num-3">3</div>
+        <div class="popup__etape" id="step-indicator-3">
+          <div class="popup__etape-num">3</div>
           <div>
             <div class="popup__etape-titre">Suivi administratif</div>
-            <div class="popup__etape-desc">Notre équipe te recontacte sous 48h pour finaliser ton dossier de licence et te donner toutes les infos pour ta première séance.</div>
+            <div class="popup__etape-desc">L'équipe UST te recontacte sous 48h pour finaliser ton dossier de licence.</div>
           </div>
         </div>
       </div>
     </div>
-    <!-- DROITE : formulaire / confirmation -->
-    <div class="popup__right">
-      <!-- VUE 1 : formulaire -->
-      <div id="popup-view-form">
+
+    <!-- DROITE : steps -->
+    <div class="popup__right" style="position:relative;overflow:hidden">
+
+      <!-- STEP 1 : Formulaire -->
+      <div class="popup-step" id="popup-step-1">
         <div class="popup__form-titre">Formulaire<br>d'inscription</div>
-        <div class="popup__form-sub">Étape 1 — Tes informations</div>
-        <form id="inscriptionForm" onsubmit="submitInscription(event)">
+        <div class="popup__form-sub" style="margin-bottom:20px">Étape 1 sur 3 — Tes informations</div>
+        <form id="inscriptionForm" onsubmit="goStep2(event)">
           <div class="form-row">
             <div class="form-field"><label for="insc-nom">Nom *</label><input id="insc-nom" name="Nom" type="text" placeholder="Nom de famille" required></div>
             <div class="form-field"><label for="insc-prenom">Prénom *</label><input id="insc-prenom" name="Prénom" type="text" placeholder="Prénom" required></div>
@@ -987,39 +996,60 @@ document.querySelectorAll('.tl-track').forEach(tl=>{
           <div class="form-row">
             <div class="form-field">
               <label for="insc-poste">Poste</label>
-              <select id="insc-poste" name="Poste">
-                <option value="">— Choisir —</option>
-                <option>Gardien</option><option>Défenseur</option><option>Milieu</option><option>Attaquant</option>
-              </select>
+              <select id="insc-poste" name="Poste"><option value="">— Choisir —</option><option>Gardien</option><option>Défenseur</option><option>Milieu</option><option>Attaquant</option></select>
             </div>
             <div class="form-field">
               <label for="insc-niveau">Niveau</label>
-              <select id="insc-niveau" name="Niveau">
-                <option value="">— Choisir —</option>
-                <option>Débutant</option><option>Intermédiaire</option><option>Confirmé</option>
-              </select>
+              <select id="insc-niveau" name="Niveau"><option value="">— Choisir —</option><option>Débutant</option><option>Intermédiaire</option><option>Confirmé</option></select>
             </div>
           </div>
           <div class="form-field"><label for="insc-msg">Message (optionnel)</label><textarea id="insc-msg" name="Message" placeholder="Questions, informations complémentaires..."></textarea></div>
           <button type="submit" class="btn-submit">Envoyer ma demande →</button>
         </form>
       </div>
-      <!-- VUE 2 : confirmation + paiement -->
-      <div id="popup-view-confirm" style="display:none;height:100%;display:none;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:20px">
-        <div style="width:64px;height:64px;background:#dcfce7;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto">
-          <i class="ti ti-check" style="font-size:28px;color:#16a34a"></i>
+
+      <!-- STEP 2 : Paiement -->
+      <div class="popup-step" id="popup-step-2" style="display:none">
+        <div style="text-align:center;margin-bottom:28px">
+          <div style="width:56px;height:56px;background:#dcfce7;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px">
+            <i class="ti ti-check" style="font-size:26px;color:#16a34a"></i>
+          </div>
+          <div class="popup__form-titre" style="margin-bottom:6px">Demande envoyée !</div>
+          <p style="font-size:13px;color:var(--gris-muted);line-height:1.7">Ta demande a été transmise à <strong>recrutement@ustoulouse.com</strong>.</p>
         </div>
-        <div>
-          <div style="font-size:20px;font-weight:800;text-transform:uppercase;color:var(--bleu);margin-bottom:8px">Demande envoyée !</div>
-          <p style="font-size:13px;color:var(--gris-muted);line-height:1.7;max-width:320px">Ta demande a été transmise à <strong>recrutement@ustoulouse.com</strong>. Notre équipe te recontacte sous 48h.</p>
+        <div style="background:var(--gris-bg);border-radius:var(--radius);padding:24px;border-left:4px solid var(--brun);margin-bottom:24px">
+          <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--brun);margin-bottom:10px"><i class="ti ti-lock" style="font-size:13px;margin-right:4px"></i> Étape 2 — Paiement sécurisé</div>
+          <p style="font-size:14px;color:#374151;line-height:1.7;margin-bottom:6px">Règle maintenant ta cotisation :</p>
+          <div style="font-size:32px;font-weight:900;color:var(--bleu);margin-bottom:4px">220 €</div>
+          <p style="font-size:12px;color:var(--gris-muted);margin-bottom:20px">Licence UST + Licence FFF incluses · Paiement 100% sécurisé</p>
+          <a href="https://boutique.ustoulouse.com/produit/cotisation-football" target="_blank" onclick="setTimeout(goStep3, 2000)" class="btn-submit" style="display:block;text-decoration:none;text-align:center;margin-bottom:12px">Payer en ligne — 220€ →</a>
+          <p style="font-size:11px;color:#9ca3af;text-align:center">Tu seras redirigé vers notre boutique WooCommerce</p>
         </div>
-        <div style="background:var(--gris-bg);border-radius:var(--radius);padding:20px 24px;width:100%;border-left:4px solid var(--brun)">
-          <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--brun);margin-bottom:6px">Étape 2 — Paiement de la cotisation</div>
-          <p style="font-size:13px;color:var(--gris-muted);line-height:1.6;margin-bottom:14px">Règle maintenant ta cotisation de <strong>220€</strong> (Licence UST + FFF incluse) via notre boutique sécurisée.</p>
-          <a href="https://boutique.ustoulouse.com/produit/cotisation-football" target="_blank" class="btn-submit" style="display:block;text-decoration:none;text-align:center">Payer en ligne — 220€</a>
-        </div>
-        <p style="font-size:12px;color:#9ca3af;line-height:1.6">Après le paiement, notre équipe te recontacte<br>pour finaliser ton dossier de licence.</p>
+        <button type="button" onclick="goStep3()" class="btn-submit" style="background:rgba(0,0,0,.08);color:#374151;margin-top:4px">J'ai déjà payé →</button>
       </div>
+
+      <!-- STEP 3 : Confirmation -->
+      <div class="popup-step" id="popup-step-3" style="display:none">
+        <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;height:100%;gap:20px;padding:20px 0">
+          <div style="width:72px;height:72px;background:linear-gradient(135deg,var(--bleu),var(--bleu-clair));border-radius:50%;display:flex;align-items:center;justify-content:center">
+            <i class="ti ti-trophy" style="font-size:32px;color:#fff"></i>
+          </div>
+          <div>
+            <div style="font-size:22px;font-weight:900;text-transform:uppercase;color:var(--bleu);margin-bottom:8px">Bienvenue à l'UST !</div>
+            <p style="font-size:14px;color:var(--gris-muted);line-height:1.8;max-width:340px">Ton inscription est en cours de traitement. Notre équipe te recontacte <strong>sous 48h</strong> pour finaliser ton dossier administratif et de licence FFF.</p>
+          </div>
+          <div style="background:var(--gris-bg);border-radius:var(--radius);padding:20px 24px;width:100%;text-align:left">
+            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--bleu);margin-bottom:10px">Étape 3 — Suivi administratif</div>
+            <ul style="list-style:none;display:flex;flex-direction:column;gap:8px">
+              <li style="font-size:13px;color:#374151;display:flex;align-items:flex-start;gap:10px"><i class="ti ti-check" style="color:#16a34a;margin-top:2px;flex-shrink:0"></i> Email de confirmation envoyé à ton adresse</li>
+              <li style="font-size:13px;color:#374151;display:flex;align-items:flex-start;gap:10px"><i class="ti ti-check" style="color:#16a34a;margin-top:2px;flex-shrink:0"></i> Dossier transmis à la Ligue Occitanie</li>
+              <li style="font-size:13px;color:#374151;display:flex;align-items:flex-start;gap:10px"><i class="ti ti-phone" style="color:var(--brun);margin-top:2px;flex-shrink:0"></i> Un responsable UST te rappelle sous 48h</li>
+            </ul>
+          </div>
+          <button onclick="closePopup()" class="btn-submit" style="background:var(--bleu)">Fermer</button>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
@@ -1070,36 +1100,49 @@ function switchComp(btn){
 })();
 
 // Popup inscription
+function showStep(n){
+  [1,2,3].forEach(function(i){
+    var s=document.getElementById('popup-step-'+i);
+    var ind=document.getElementById('step-indicator-'+i);
+    if(s) s.style.display=(i===n)?'block':'none';
+    if(ind){
+      var num=ind.querySelector('.popup__etape-num');
+      if(num){ num.classList.toggle('active-step', i===n); }
+    }
+  });
+}
 window.openPopup = function(){
   document.getElementById('inscriptionPopup').classList.add('open');
   document.body.style.overflow='hidden';
+  showStep(1);
 };
 window.closePopup = function(){
   document.getElementById('inscriptionPopup').classList.remove('open');
   document.body.style.overflow='';
   setTimeout(function(){
-    document.getElementById('popup-view-form').style.display='block';
-    document.getElementById('popup-view-confirm').style.display='none';
+    showStep(1);
     document.getElementById('inscriptionForm').reset();
   },400);
 };
-window.submitInscription = function(e){
-  e.preventDefault();
+window.goStep2 = function(e){
+  if(e) e.preventDefault();
   var f=document.getElementById('inscriptionForm');
   var fields=[].slice.call(f.querySelectorAll('input,select,textarea'));
   var lines=fields.filter(function(el){return el.name&&el.value;}).map(function(el){return el.name+': '+el.value;});
   var subject=encodeURIComponent('Demande inscription Football UST — '+document.getElementById('insc-nom').value+' '+document.getElementById('insc-prenom').value);
   var body=encodeURIComponent(lines.join('\n'));
-  window.location.href='mailto:recrutement@ustoulouse.com?subject='+subject+'&body='+body;
-  setTimeout(function(){
-    document.getElementById('popup-view-form').style.display='none';
-    document.getElementById('popup-view-confirm').style.display='flex';
-  },600);
+  window.open('mailto:recrutement@ustoulouse.com?subject='+subject+'&body='+body);
+  showStep(2);
 };
+window.goStep3 = function(){
+  showStep(3);
+};
+window.submitInscription = window.goStep2;
 window.switchComp = function(btn){
   document.querySelectorAll('.comp-tab').forEach(function(t){t.classList.remove('active');});
   btn.classList.add('active');
 };
+
 </script>
 
 </body></html>
