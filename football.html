@@ -250,7 +250,7 @@ body{font-family:var(--font);background:var(--blanc);color:#1a1a2e;line-height:1
 .valeur-card{position:relative;height:300px;overflow:hidden;cursor:pointer;border-radius:var(--radius)}
 .valeur-card__bg{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .5s}
 .valeur-card:hover .valeur-card__bg{transform:scale(1.06)}
-.valeur-card__overlay{position:absolute;inset:0;background:rgba(0,0,0,.62)}
+.valeur-card__overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(6,78,137,.95) 0%,rgba(178,181,182,.15) 50%,rgba(255,255,255,.27) 100%)}
 .valeur-card__content{position:absolute;inset:0;padding:30px 26px;display:flex;flex-direction:column;justify-content:flex-end}
 .valeur-card__ico{width:48px;height:48px;border-radius:var(--radius-sm);border:2px solid var(--brun-clair);display:flex;align-items:center;justify-content:center;color:var(--brun-clair);margin-bottom:14px;transition:background .2s}
 .valeur-card:nth-child(even) .valeur-card__ico{border-color:var(--bleu-clair);color:var(--bleu-clair)}
@@ -878,7 +878,12 @@ img{max-width:100%}
   .tl-hint,.tl-track{padding-left:5%!important;padding-right:5%!important}
   .valeur-card{height:200px!important}
   .valeurs-grid{grid-template-columns:1fr!important}
-  .partenaires-track-wrap{padding:0 5%!important}
+  .partenaires-track-wrap{padding:0!important}
+  .valeur-card__ico{border:0!important}
+  .eng-card__num{display:none!important}
+  .valeur-card__titre{font-size:20px!important;margin-bottom:0!important}
+  .chiffre{padding:16px 19px!important}
+  .hero__devise{font-size:12px!important;letter-spacing:1px!important;font-style:normal!important}
   .eng-card{flex-direction:column!important;gap:16px;padding:24px 20px}
   .eng-card__ico{width:48px!important;height:48px!important}
 }
