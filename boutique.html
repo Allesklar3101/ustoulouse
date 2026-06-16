@@ -613,6 +613,9 @@ img{max-width:100%}
 .cart-line__ctrl button{width:24px;height:24px;border:1px solid rgba(2,13,24,.2);background:#fff;border-radius:6px;cursor:pointer;font-weight:700}
 .cart-line__price{font-weight:800;color:var(--brun);font-size:14px}
 .cart-line__rm{background:none;border:none;cursor:pointer;color:rgba(2,13,24,.4);font-size:18px;line-height:1}
+.recap-subtitle{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.65);margin-top:2px}
+.cart-line__thumb{width:40px;height:40px;border-radius:8px;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.cart-line__thumb svg{width:22px;height:22px;fill:#fff;opacity:.9}
 .cart-empty{padding:40px 0;text-align:center;color:var(--gris-muted)}
 .cart-total-row{display:flex;justify-content:space-between;font-weight:800;font-size:18px;color:var(--bleu);margin-bottom:16px}
 .shop-pop__foot .btn{width:100%;justify-content:center}
@@ -631,6 +634,11 @@ img{max-width:100%}
   .shop-layout{grid-template-columns:1fr!important}
   .shop-sidebar{margin-bottom:32px;position:static}
   .product-grid{grid-template-columns:1fr 1fr!important}
+  .filter-group__title{cursor:pointer;display:flex;justify-content:space-between;align-items:center;user-select:none}
+  .filter-group__title::after{content:'▾';font-size:14px;color:var(--bleu);transition:transform .25s;flex-shrink:0}
+  .filter-group.filter-open .filter-group__title::after{transform:rotate(180deg)}
+  .filter-group__body{display:none}
+  .filter-group.filter-open .filter-group__body{display:block}
   .form-row-2{grid-template-columns:1fr!important}
   .product-modal-inner{grid-template-columns:1fr!important}
   .product-modal-img{height:200px!important}
@@ -790,13 +798,13 @@ img{max-width:100%}
           <i class="ti ti-search"></i>
           <input type="text" id="searchInput" placeholder="Rechercher un article..." oninput="onSearchInput()" autocomplete="off">
         </div>
-        <div class="filter-group">
-          <p class="filter-group__title">Catégories</p>
-          <div id="catFilters"></div>
+        <div class="filter-group" id="fg-cat">
+          <p class="filter-group__title" onclick="toggleFilterGroup('fg-cat')">Catégories</p>
+          <div class="filter-group__body"><div id="catFilters"></div></div>
         </div>
-        <div class="filter-group">
-          <p class="filter-group__title">Marque</p>
-          <div id="brandFilters"></div>
+        <div class="filter-group" id="fg-brand">
+          <p class="filter-group__title" onclick="toggleFilterGroup('fg-brand')">Marque</p>
+          <div class="filter-group__body"><div id="brandFilters"></div></div>
         </div>
         <button class="filter-reset" onclick="clearFilters()">Réinitialiser les filtres</button>
       </aside>
@@ -835,7 +843,10 @@ img{max-width:100%}
 <div id="cartRecap" class="shop-pop" onclick="if(event.target===this)closeCartRecap()">
   <div class="shop-pop__box recap-box">
     <div class="shop-pop__head">
-      <h3>Mon Panier</h3>
+      <div>
+        <h3>Mon Panier</h3>
+        <p class="recap-subtitle">Récap de commande</p>
+      </div>
       <button class="shop-pop__close" onclick="closeCartRecap()" aria-label="Fermer">&times;</button>
     </div>
     <div class="shop-pop__body" id="recapItems"></div>
@@ -1193,6 +1204,11 @@ function clearFilters(){
   document.querySelectorAll('.shop-sidebar input[type=checkbox]').forEach(function(c){c.checked=false;});
   applyFilters();
 }
+function toggleFilterGroup(id){
+  if(window.innerWidth>768) return;
+  var el=document.getElementById(id);
+  if(el) el.classList.toggle('filter-open');
+}
 
 /* ===== GRILLE PRODUITS ===== */
 function renderProducts(list){
@@ -1321,18 +1337,20 @@ function renderRecap(){
   var box=document.getElementById('recapItems');
   if(!cart.length){box.innerHTML='<p class="cart-empty">Votre panier est vide</p>';}
   else{
+    var tshirtSvg='<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a1 1 0 0 0-.61 1.3L5 10h1v10a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V10h1l1.99-5.24a1 1 0 0 0-.6-1.3z"/></svg>';
     box.innerHTML=cart.map(function(it,idx){
       var meta=[];
       if(it.size) meta.push('Taille: '+it.size);
       if(it.color) meta.push('Couleur: '+it.color);
-      return '<div class="cart-line">'
-        +'<div class="cart-line__sw" style="background:'+(it.swatch||'#ccc')+'"></div>'
-        +'<div class="cart-line__info">'
+      var bg=it.swatch||'#999';
+      return '<div class="cart-line" style="display:flex;align-items:center;gap:10px">'
+        +'<div class="cart-line__thumb" style="background:'+bg+'">'+tshirtSvg+'</div>'
+        +'<div class="cart-line__info" style="flex:1;min-width:0">'
           +'<div class="cart-line__name">'+it.name+'</div>'
           +'<div class="cart-line__meta">'+(meta.join(' · ')||'&nbsp;')+'</div>'
           +'<div class="cart-line__ctrl"><button onclick="changeCartQty('+idx+',-1)">&minus;</button><span>'+it.qty+'</span><button onclick="changeCartQty('+idx+',1)">+</button></div>'
         +'</div>'
-        +'<div style="text-align:right"><div class="cart-line__price">'+formatEuro(it.unitPrice*it.qty)+'</div><button class="cart-line__rm" onclick="removeFromCart('+idx+')">&times;</button></div>'
+        +'<div style="text-align:right;flex-shrink:0"><div class="cart-line__price">'+formatEuro(it.unitPrice*it.qty)+'</div><button class="cart-line__rm" onclick="removeFromCart('+idx+')">&times;</button></div>'
       +'</div>';
     }).join('');
   }
