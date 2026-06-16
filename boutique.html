@@ -361,7 +361,7 @@ body{font-family:var(--font);background:var(--blanc);color:#1a1a2e;line-height:1
   .tl-outer,.tl-hint,.partenaires-track-wrap{padding:0 24px}
 }
 
-.wrap{max-width:1100px;width:80%;margin:0 auto;padding:0}
+.wrap{max-width:90%;width:90%;margin:0 auto;padding:0}
 .h2{font-size:clamp(26px,3.5vw,40px);letter-spacing:-.5px}
 
 /* HERO IDENTIQUE ACCUEIL */
@@ -1127,7 +1127,7 @@ function openProduct(id){
       +'<div class="swatch-row" id="swatchRow">'
       +currentProduct.colors.map(function(c){
         var hex=COLOR_MAP[c]||'#999';
-        return '<span class="swatch'+(c==='Blanc'?' swatch--blanc':'')+'" data-color="'+c+'" style="background:'+hex+'" title="'+c+'" onclick="selectSwatch(this,''+c+'')"></span>';
+        return '<span class="swatch'+(c==='Blanc'?' swatch--blanc':'')+'" data-color="'+c+'" style="background:'+hex+'" title="'+c+'" onclick="selectSwatch(this,\''+c+'\')"></span>';
       }).join('')+'</div>';
   }
   var sizeHtml='';
@@ -1149,7 +1149,7 @@ function openProduct(id){
     +'<button class="qty-btn" onclick="changeQty(1)">+</button></div>'
     +'<button class="btn btn--brun" onclick="addToCart()" style="flex:1;justify-content:center">Ajouter au panier</button>'
     +'</div>'
-    +'<p style="font-size:12px;color:var(--gris-muted);margin-top:12px;text-align:center"><i class="ti ti-truck-delivery"></i> Livraison offerte dès 60 € d'achat</p>';
+    +'<p style="font-size:12px;color:var(--gris-muted);margin-top:12px;text-align:center"><i class="ti ti-truck-delivery"></i> Livraison offerte dès 60 € d\'achat</p>';
   renderModalPhoto(0);
   document.getElementById('productModal').style.display='flex';
   document.body.style.overflow='hidden';
