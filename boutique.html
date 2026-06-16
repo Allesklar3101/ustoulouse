@@ -689,17 +689,20 @@ img{max-width:100%}
 .ck-section-title{font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--bleu);border-bottom:1px solid #e5e9f0;padding-bottom:8px;margin:18px 0 14px}
 .ck-total-row{display:flex;justify-content:space-between;padding:8px 0;font-size:14px;border-top:1px solid #f0f0f0}
 .ck-total-row--total{font-weight:800;font-size:16px;color:var(--bleu);border-top:2px solid var(--bleu);margin-top:4px}
-.promo-row{display:flex;gap:8px}
-.promo-row input{flex:1;border:1.5px solid rgba(2,13,24,.15);padding:12px;border-radius:var(--radius-sm);font-family:inherit;font-size:15px}
+.promo-row{display:flex;flex-direction:column;gap:10px}
+.promo-row input{width:100%;border:1.5px solid rgba(2,13,24,.15);padding:12px;border-radius:var(--radius-sm);font-family:inherit;font-size:15px}
 .promo-row input:focus{outline:none;border-color:var(--bleu)}
-.promo-row .btn{flex-shrink:0;margin-top:0;white-space:nowrap}
+.promo-row .btn{width:100%;justify-content:center;margin-top:0;white-space:nowrap}
 .promo-msg{font-size:13px;margin:8px 0 0;min-height:0}
 .promo-msg.ok{color:#16a34a}
 .promo-msg.err{color:#dc2626}
 .promo-same{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--gris-muted);margin-bottom:12px;cursor:pointer}
 .promo-same input{width:auto;accent-color:var(--bleu)}
 @media(max-width:680px){
-  .product-modal-inner{grid-template-columns:1fr!important;width:92vw!important;max-width:92vw!important;overflow-y:auto}
+  /* Modal produit + pop-ups panier/checkout en plein écran sans border-radius */
+  .product-modal,.shop-pop{padding:0!important}
+  .product-modal-inner{grid-template-columns:1fr!important;width:100vw!important;max-width:100vw!important;height:100vh!important;max-height:100vh!important;border-radius:0!important;overflow-y:auto}
+  .shop-pop__box{width:100vw!important;max-width:100vw!important;height:100vh!important;max-height:100vh!important;border-radius:0!important}
   .pm-carousel{min-height:200px}
   .pm-carousel__main{min-height:200px}
 }
