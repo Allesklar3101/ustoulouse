@@ -620,7 +620,10 @@ img{max-width:100%}
 .cart-total-row{display:flex;justify-content:space-between;font-weight:800;font-size:18px;color:var(--bleu);margin-bottom:16px}
 .shop-pop__foot .btn{width:100%;justify-content:center}
 .os-mini{background:var(--gris-bg);border-radius:var(--radius);padding:18px;margin-bottom:20px}
-.os-line{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(2,13,24,.07);font-size:13px;color:var(--bleu)}
+.os-line{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid rgba(2,13,24,.07);font-size:13px;color:var(--bleu)}
+.os-line .cart-line__thumb{width:46px;height:46px}
+.os-line__name{flex:1;min-width:0;line-height:1.35}
+.os-line__price{flex-shrink:0;font-weight:700;white-space:nowrap}
 .os-total{display:flex;justify-content:space-between;font-weight:800;font-size:16px;color:var(--bleu);margin-top:12px}
 .checkout-form{display:flex;flex-direction:column;gap:14px}
 .form-row-2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
@@ -1315,6 +1318,8 @@ function addToCart(){
   }
   cart.push({id:currentProduct.id,name:currentProduct.name,price:currentProduct.price,
     color:selectedColor,size:selectedSize||'',qty:qty,
+    cat:currentProduct.cat,colorHex:currentProduct.color,
+    img:(currentProduct.photos&&currentProduct.photos[0])||'',
     unitPrice:parseFloat(currentProduct.price.replace(',','.'))});
   updateCartBadge();
   toast('Article ajouté au panier ✓');
@@ -1332,19 +1337,26 @@ function updateCartBadge(){
 function changeCartQty(i,d){cart[i].qty=Math.max(1,cart[i].qty+d);updateCartBadge();renderRecap();}
 function removeFromCart(i){cart.splice(i,1);updateCartBadge();renderRecap();}
 
+/* ===== MINIATURE PRODUIT (photo si dispo, sinon placeholder coloré) ===== */
+function cartThumb(it){
+  if(it.img){
+    return '<div class="cart-line__thumb" style="background:#f0f0f0"><img src="'+it.img+'" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:8px"></div>';
+  }
+  var bg=it.colorHex||'#999';
+  return '<div class="cart-line__thumb" style="background:'+bg+'">'+catIcon(it.cat)+'</div>';
+}
+
 /* ===== POPUP RÉCAP ===== */
 function renderRecap(){
   var box=document.getElementById('recapItems');
   if(!cart.length){box.innerHTML='<p class="cart-empty">Votre panier est vide</p>';}
   else{
-    var tshirtSvg='<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a1 1 0 0 0-.61 1.3L5 10h1v10a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V10h1l1.99-5.24a1 1 0 0 0-.6-1.3z"/></svg>';
     box.innerHTML=cart.map(function(it,idx){
       var meta=[];
       if(it.size) meta.push('Taille: '+it.size);
       if(it.color) meta.push('Couleur: '+it.color);
-      var bg=it.swatch||'#999';
       return '<div class="cart-line" style="display:flex;align-items:center;gap:10px">'
-        +'<div class="cart-line__thumb" style="background:'+bg+'">'+tshirtSvg+'</div>'
+        +cartThumb(it)
         +'<div class="cart-line__info" style="flex:1;min-width:0">'
           +'<div class="cart-line__name">'+it.name+'</div>'
           +'<div class="cart-line__meta">'+(meta.join(' · ')||'&nbsp;')+'</div>'
@@ -1365,7 +1377,11 @@ function closeCartRecap(){closeModal('cartRecap');}
 function renderCheckoutSummary(){
   var box=document.getElementById('checkoutSummary');
   var lines=cart.length?cart.map(function(it){
-    return '<div class="os-line"><span>'+it.name+(it.size?' ('+it.size+')':'')+' ×'+it.qty+'</span><span>'+formatEuro(it.unitPrice*it.qty)+'</span></div>';
+    return '<div class="os-line">'
+      +cartThumb(it)
+      +'<span class="os-line__name">'+it.name+(it.size?' ('+it.size+')':'')+' ×'+it.qty+'</span>'
+      +'<span class="os-line__price">'+formatEuro(it.unitPrice*it.qty)+'</span>'
+    +'</div>';
   }).join(''):'<p class="cart-empty">Votre panier est vide</p>';
   box.innerHTML=lines+'<div class="os-total"><span>Total</span><span>'+formatEuro(cartTotal())+'</span></div>';
 }
