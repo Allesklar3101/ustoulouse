@@ -646,7 +646,7 @@ img{max-width:100%}
 .product-card__badge.badge--Match{background:#dc2626;color:#fff}
 
 /* ── MODAL CAROUSEL ── */
-.product-modal-inner{display:grid;grid-template-columns:1fr 1fr;max-width:820px;width:92vw;background:#fff;border-radius:var(--radius-lg);overflow:hidden;position:relative;max-height:90vh}
+.product-modal-inner{display:grid;grid-template-columns:1fr 1fr;max-width:80vw;width:80vw;background:#fff;border-radius:var(--radius-lg);overflow:hidden;position:relative;max-height:90vh}
 .product-modal-left{position:relative;background:var(--gris-bg);display:flex;flex-direction:column}
 .pm-carousel{position:relative;flex:1;min-height:320px}
 .pm-carousel__main{width:100%;height:100%;min-height:320px;display:flex;align-items:center;justify-content:center;overflow:hidden;background:var(--gris-bg)}
@@ -661,7 +661,7 @@ img{max-width:100%}
 .pm-thumb.active{border-color:var(--bleu)}
 .pm-thumb--placeholder{color:rgba(0,0,0,.2)}
 .product-modal-body{padding:32px;overflow-y:auto;max-height:90vh}
-.product-modal-close{position:absolute;top:10px;right:10px;z-index:10;background:rgba(255,255,255,.9);border:none;border-radius:50%;width:32px;height:32px;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.product-modal-close{position:absolute;top:14px;right:14px;z-index:20;background:rgba(255,255,255,.95);border:none;border-radius:50%;width:38px;height:38px;font-size:22px;color:var(--bleu);cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;box-shadow:0 2px 8px rgba(0,0,0,.15)}
 /* ── COLOR SWATCHES ── */
 .swatch-row{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 16px}
 .swatch{width:28px;height:28px;border-radius:50%;cursor:pointer;border:2px solid transparent;outline:2px solid transparent;transition:outline .15s}
@@ -689,8 +689,17 @@ img{max-width:100%}
 .ck-section-title{font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--bleu);border-bottom:1px solid #e5e9f0;padding-bottom:8px;margin:18px 0 14px}
 .ck-total-row{display:flex;justify-content:space-between;padding:8px 0;font-size:14px;border-top:1px solid #f0f0f0}
 .ck-total-row--total{font-weight:800;font-size:16px;color:var(--bleu);border-top:2px solid var(--bleu);margin-top:4px}
+.promo-row{display:flex;gap:8px}
+.promo-row input{flex:1;border:1.5px solid rgba(2,13,24,.15);padding:12px;border-radius:var(--radius-sm);font-family:inherit;font-size:15px}
+.promo-row input:focus{outline:none;border-color:var(--bleu)}
+.promo-row .btn{flex-shrink:0;margin-top:0;white-space:nowrap}
+.promo-msg{font-size:13px;margin:8px 0 0;min-height:0}
+.promo-msg.ok{color:#16a34a}
+.promo-msg.err{color:#dc2626}
+.promo-same{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--gris-muted);margin-bottom:12px;cursor:pointer}
+.promo-same input{width:auto;accent-color:var(--bleu)}
 @media(max-width:680px){
-  .product-modal-inner{grid-template-columns:1fr!important}
+  .product-modal-inner{grid-template-columns:1fr!important;width:92vw!important;max-width:92vw!important;overflow-y:auto}
   .pm-carousel{min-height:200px}
   .pm-carousel__main{min-height:200px}
 }
@@ -800,8 +809,8 @@ img{max-width:100%}
 <!-- PRODUCT MODAL -->
 <div id="productModal" class="product-modal" onclick="if(event.target===this)closeProduct()">
   <div class="product-modal-inner">
+    <button class="product-modal-close" onclick="closeProduct()" aria-label="Fermer">&times;</button>
     <div class="product-modal-left">
-      <button class="product-modal-close" onclick="closeProduct()" aria-label="Fermer">&times;</button>
       <div class="pm-carousel">
         <div class="pm-carousel__main" id="pmMainPhoto"></div>
         <button class="pm-carousel__nav pm-carousel__nav--prev" onclick="photoNav(-1)" aria-label="Précédent">&#8249;</button>
@@ -853,6 +862,11 @@ img{max-width:100%}
           <div><label>Email *</label><input type="email" id="ck-email" placeholder="vous@email.com" required></div>
           <div><label>Téléphone</label><input type="tel" id="ck-tel" placeholder="06 00 00 00 00"></div>
         </div>
+        <div><label>Adresse de facturation *</label><input type="text" id="ck-fact-adresse" placeholder="Numéro et nom de rue" required></div>
+        <div class="form-row-2">
+          <div><label>Code postal *</label><input type="text" id="ck-fact-cp" placeholder="31000" required></div>
+          <div><label>Ville *</label><input type="text" id="ck-fact-ville" placeholder="Toulouse" required></div>
+        </div>
 
         <h4 class="ck-section-title">Mode de livraison</h4>
         <div class="delivery-options">
@@ -882,15 +896,28 @@ img{max-width:100%}
 
         <div id="adresse-wrap" style="display:none">
           <h4 class="ck-section-title">Adresse de livraison</h4>
-          <div><label>Adresse *</label><input type="text" id="ck-adresse" placeholder="Numéro et nom de rue"></div>
-          <div class="form-row-2">
-            <div><label>Code postal *</label><input type="text" id="ck-cp" placeholder="31000"></div>
-            <div><label>Ville *</label><input type="text" id="ck-ville" placeholder="Toulouse"></div>
+          <label class="promo-same"><input type="checkbox" id="ck-same-adresse" checked onchange="toggleSameAddress()"> Identique à l'adresse de facturation</label>
+          <div id="adresse-fields" style="display:none">
+            <div><label>Adresse *</label><input type="text" id="ck-adresse" placeholder="Numéro et nom de rue"></div>
+            <div class="form-row-2">
+              <div><label>Code postal *</label><input type="text" id="ck-cp" placeholder="31000"></div>
+              <div><label>Ville *</label><input type="text" id="ck-ville" placeholder="Toulouse"></div>
+            </div>
           </div>
         </div>
 
+        <h4 class="ck-section-title">Code promo</h4>
+        <div class="promo-row">
+          <input type="text" id="ck-promo" placeholder="Entrez votre code">
+          <button type="button" class="btn btn--outline-brun" onclick="applyPromo()">Appliquer</button>
+        </div>
+        <p id="promo-msg" class="promo-msg"></p>
+
         <div class="ck-total-row">
           <span>Sous-total articles</span><span id="ckSubtotal">0,00 €</span>
+        </div>
+        <div class="ck-total-row" id="ck-discount-row" style="display:none">
+          <span id="ck-discount-label">Remise</span><span id="ckDiscount" style="color:#16a34a">-0,00 €</span>
         </div>
         <div class="ck-total-row" id="ck-shipping-row">
           <span>Frais de livraison</span><span id="ckShipping">Gratuit</span>
@@ -1039,6 +1066,36 @@ var selectedSize=null, selectedColor=null, currentPhotos=[], currentPhotoIdx=0;
 var COLOR_MAP={'Marine':'#0b2240','Noir':'#1a1a1a','Blanc':'#f8f8f6',
   'Gris':'#9ca3af','Bleu':'#064e89','Rouge':'#dc2626','Brun':'#8b664b'};
 
+/* Codes promo (à synchroniser avec WooCommerce) : type 'percent' ou 'fixed' */
+var PROMO_CODES={
+  'UST10':{type:'percent',value:10,label:'Code UST10 (-10%)'},
+  'BIENVENUE':{type:'fixed',value:5,label:'Code BIENVENUE (-5 €)'},
+  'CLUB15':{type:'percent',value:15,label:'Code CLUB15 (-15%)'}
+};
+var appliedPromo=null;
+
+function applyPromo(){
+  var input=document.getElementById('ck-promo');
+  var msg=document.getElementById('promo-msg');
+  if(!input) return;
+  var code=input.value.trim().toUpperCase();
+  if(!code){ if(msg){msg.textContent='Entrez un code promo.';msg.className='promo-msg err';} return; }
+  if(PROMO_CODES[code]){
+    appliedPromo=Object.assign({code:code},PROMO_CODES[code]);
+    if(msg){msg.textContent='✓ '+appliedPromo.label+' appliqué.';msg.className='promo-msg ok';}
+  } else {
+    appliedPromo=null;
+    if(msg){msg.textContent='Code promo invalide.';msg.className='promo-msg err';}
+  }
+  updateCkTotals();
+}
+
+function toggleSameAddress(){
+  var same=document.getElementById('ck-same-adresse');
+  var fields=document.getElementById('adresse-fields');
+  if(fields) fields.style.display=(same&&same.checked)?'none':'';
+}
+
 function updateDelivery(){
   var v=document.querySelector('input[name="livraison"]:checked');
   var wrap=document.getElementById('adresse-wrap');
@@ -1053,8 +1110,22 @@ function updateCkTotals(){
   var ship=0;
   var v=document.querySelector('input[name="livraison"]:checked');
   if(v&&v.value==='livraison') ship=10;
+  // remise promo
+  var discount=0;
+  if(appliedPromo){
+    discount=appliedPromo.type==='percent'?sub*appliedPromo.value/100:appliedPromo.value;
+    if(discount>sub) discount=sub;
+  }
   var s=document.getElementById('ckSubtotal');if(s)s.textContent=formatEuro(sub);
-  var t=document.getElementById('ckTotal');if(t)t.textContent=formatEuro(sub+ship);
+  var dRow=document.getElementById('ck-discount-row');
+  var dEl=document.getElementById('ckDiscount');
+  var dLabel=document.getElementById('ck-discount-label');
+  if(discount>0){
+    if(dRow)dRow.style.display='';
+    if(dEl)dEl.textContent='-'+formatEuro(discount);
+    if(dLabel)dLabel.textContent='Remise'+(appliedPromo?' ('+appliedPromo.code+')':'');
+  } else if(dRow){ dRow.style.display='none'; }
+  var t=document.getElementById('ckTotal');if(t)t.textContent=formatEuro(sub-discount+ship);
 }
 
 /* --- Icône SVG selon la catégorie --- */
@@ -1291,11 +1362,20 @@ function handleStripeCheckout(){
   var email=(document.getElementById('ck-email')||{}).value||'';
   var nom=(document.getElementById('ck-nom')||{}).value||'';
   if(!email.trim()||!nom.trim()){alert('Merci de renseigner votre prénom, nom et email.');return;}
+  // adresse de facturation obligatoire
+  var fAdr=(document.getElementById('ck-fact-adresse')||{}).value||'';
+  var fCp=(document.getElementById('ck-fact-cp')||{}).value||'';
+  var fVille=(document.getElementById('ck-fact-ville')||{}).value||'';
+  if(!fAdr.trim()||!fCp.trim()||!fVille.trim()){alert('Merci de renseigner votre adresse de facturation.');return;}
+  // adresse de livraison si différente
   var v=document.querySelector('input[name="livraison"]:checked');
   if(v&&v.value==='livraison'){
-    var adr=(document.getElementById('ck-adresse')||{}).value||'';
-    var cp=(document.getElementById('ck-cp')||{}).value||'';
-    if(!adr.trim()||!cp.trim()){alert('Merci de renseigner votre adresse de livraison.');return;}
+    var same=document.getElementById('ck-same-adresse');
+    if(!same||!same.checked){
+      var adr=(document.getElementById('ck-adresse')||{}).value||'';
+      var cp=(document.getElementById('ck-cp')||{}).value||'';
+      if(!adr.trim()||!cp.trim()){alert('Merci de renseigner votre adresse de livraison.');return;}
+    }
   }
   alert('Redirection vers le paiement sécurisé Stripe...');
 }
