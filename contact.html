@@ -253,9 +253,9 @@ body{font-family:var(--font);background:var(--blanc);color:#1a1a2e;line-height:1
 .valeur-card__content{position:absolute;inset:0;padding:30px 26px;display:flex;flex-direction:column;justify-content:flex-end}
 .valeur-card__ico{width:48px;height:48px;border-radius:var(--radius-sm);border:2px solid var(--brun-clair);display:flex;align-items:center;justify-content:center;color:var(--brun-clair);margin-bottom:14px;transition:background .2s}
 .valeur-card:nth-child(even) .valeur-card__ico{border-color:var(--bleu-clair);color:var(--bleu-clair)}
-.valeur-card:hover .valeur-card__ico{background:rgba(255,255,255,.1)}
+.valeur-card:hover .valeur-card__ico{}
 .valeur-card__titre{font-size:22px;font-weight:900;text-transform:uppercase;color:var(--brun-clair);line-height:1;margin-bottom:6px}
-.valeur-card:nth-child(even) .valeur-card__titre{color:var(--bleu-clair)}
+.valeur-card:nth-child(even) .valeur-card__titre{color:#fff}
 .valeur-card__desc{font-size:13px;color:rgba(255,255,255,.75);line-height:1.6;max-height:0;overflow:hidden;transition:max-height .35s}
 .valeur-card:hover .valeur-card__desc{max-height:80px}
 
@@ -487,7 +487,7 @@ body{font-family:var(--font);background:var(--blanc);color:#1a1a2e;line-height:1
 }
 
 /* ── NETTOYAGE MOBILE ── */
-html,body{overflow-x:hidden}
+html{overflow-x:hidden}
 img{max-width:100%}
 @media(max-width:768px){
   .ust-nav{padding:0 20px}
@@ -506,7 +506,9 @@ img{max-width:100%}
   .dp-modal__header{border-radius:20px 20px 0 0!important;overflow-y:visible}
   .part-popup{max-height:90vh;overflow-y:auto}
   .chiffres{grid-template-columns:1fr 1fr!important;margin-top:24px!important;margin-bottom:24px!important}
-  .sport-card{height:260px!important}
+  .sport-card{height:280px!important}
+  .m2__logo{height:70px!important}
+  .ust-nav__logo-img{width:70px!important;height:70px!important;margin-top:20%!important;margin-left:3%!important}
   .tl-hint,.tl-track{padding-left:5%!important;padding-right:5%!important}
   .valeur-card{height:200px!important}
   .valeurs-grid{grid-template-columns:1fr!important}
