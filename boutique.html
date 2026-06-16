@@ -1035,6 +1035,27 @@ var products=[
 ];
 var cart=[];
 var currentProduct=null, qty=1;
+var selectedSize=null, selectedColor=null, currentPhotos=[], currentPhotoIdx=0;
+var COLOR_MAP={'Marine':'#0b2240','Noir':'#1a1a1a','Blanc':'#f8f8f6',
+  'Gris':'#9ca3af','Bleu':'#064e89','Rouge':'#dc2626','Brun':'#8b664b'};
+
+function updateDelivery(){
+  var v=document.querySelector('input[name="livraison"]:checked');
+  var wrap=document.getElementById('adresse-wrap');
+  var ckShip=document.getElementById('ckShipping');
+  if(!v) return;
+  if(v.value==='livraison'){if(wrap)wrap.style.display='';if(ckShip)ckShip.textContent='10,00 €';}
+  else{if(wrap)wrap.style.display='none';if(ckShip)ckShip.textContent='Gratuit';}
+  updateCkTotals();
+}
+function updateCkTotals(){
+  var sub=cartTotal();
+  var ship=0;
+  var v=document.querySelector('input[name="livraison"]:checked');
+  if(v&&v.value==='livraison') ship=10;
+  var s=document.getElementById('ckSubtotal');if(s)s.textContent=formatEuro(sub);
+  var t=document.getElementById('ckTotal');if(t)t.textContent=formatEuro(sub+ship);
+}
 
 /* --- Icône SVG selon la catégorie --- */
 function catIcon(cat){
