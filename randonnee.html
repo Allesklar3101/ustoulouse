@@ -500,8 +500,10 @@ img{max-width:100%}
   .sport-hero__content h1{font-size:clamp(32px,10vw,56px)!important}
   .competitions-tabs{flex-wrap:nowrap!important;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:8px;scrollbar-width:none}
   .competitions-tabs::-webkit-scrollbar{display:none}
-  .popup{grid-template-columns:1fr!important;width:92vw!important;max-width:100%!important;overflow-y:auto}
-  .popup__left{border-radius:var(--radius-lg) var(--radius-lg) 0 0!important}
+  .popup{grid-template-columns:1fr!important;width:92vw!important;max-width:100%!important;overflow-y:auto;border-radius:10px!important}
+  .popup__left{border-radius:10px 10px 0 0!important;padding:30px 15px!important}
+  .popup__right{padding:30px 15px!important}
+  .comp-tab{white-space:nowrap!important}
   .dp-modal{grid-template-columns:1fr!important;overflow-y:auto}
   .dp-modal__header{border-radius:20px 20px 0 0!important;overflow-y:visible}
   .part-popup{max-height:90vh;overflow-y:auto}
@@ -622,7 +624,7 @@ img{max-width:100%}
 
       <!-- STEP 1 : Formulaire -->
       <div class="popup-step" id="popup-step-1">
-        <div class="popup__form-titre">Demande<br>d'inscription</div>
+        <div class="popup__form-titre">Demande d'inscription</div>
         <div class="popup__form-sub" style="margin-bottom:20px">Étape 1 sur 3 — Tes informations</div>
         <form id="inscriptionForm" onsubmit="goStep2(event)" novalidate>
           <div class="hp-field" aria-hidden="true">

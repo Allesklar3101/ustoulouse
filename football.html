@@ -501,7 +501,7 @@ body{font-family:var(--font);background:var(--blanc);color:#1a1a2e;line-height:1
 .foot-hero{position:relative;min-height:100vh;display:flex;flex-direction:column;overflow:hidden;background:#020d18}
 .foot-hero__overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(2,13,24,.9) 30%,rgba(6,78,137,.2) 100%)}
 .foot-hero__content{position:relative;z-index:2;flex:1;display:flex;flex-direction:column;justify-content:center;width:90%;max-width:1100px;margin:0 auto;padding:80px 0 0}
-.foot-intro{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;margin-top:48px}
+.foot-intro{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;margin-top:0}
 .foot-intro__img{height:400px;overflow:hidden;border-radius:var(--radius)}
 .foot-intro__img img{width:100%;height:100%;object-fit:cover;display:block}
 .foot-info-card{background:#fff;border-radius:var(--radius);padding:24px;border-left:4px solid var(--brun);box-shadow:0 2px 12px rgba(0,0,0,.06);transition:transform .2s}
@@ -868,8 +868,10 @@ img{max-width:100%}
   .sport-hero__content h1{font-size:clamp(32px,10vw,56px)!important}
   .competitions-tabs{flex-wrap:nowrap!important;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:8px;scrollbar-width:none}
   .competitions-tabs::-webkit-scrollbar{display:none}
-  .popup{grid-template-columns:1fr!important;width:92vw!important;max-width:100%!important;overflow-y:auto}
-  .popup__left{border-radius:var(--radius-lg) var(--radius-lg) 0 0!important}
+  .popup{grid-template-columns:1fr!important;width:92vw!important;max-width:100%!important;overflow-y:auto;border-radius:10px!important}
+  .popup__left{border-radius:10px 10px 0 0!important;padding:30px 15px!important}
+  .popup__right{padding:30px 15px!important}
+  .comp-tab{white-space:nowrap!important}
   .dp-modal{grid-template-columns:1fr!important;overflow-y:auto}
   .dp-modal__header{border-radius:20px 20px 0 0!important;overflow-y:visible}
   .part-popup{max-height:90vh;overflow-y:auto}
@@ -989,7 +991,7 @@ document.querySelectorAll('.tl-track').forEach(tl=>{
     <!-- GAUCHE : étapes -->
     <div class="popup__left">
       <div class="popup__tag">US Toulouse — Football</div>
-      <div class="popup__titre">Devenir<br>joueur</div>
+      <div class="popup__titre">Devenir joueur</div>
       <p style="font-size:13px;color:rgba(255,255,255,.6);line-height:1.7;margin-bottom:32px">Inscriptions 2025/2026 ouvertes — places limitées !</p>
       <div class="popup__etapes">
         <div class="popup__etape" id="step-indicator-1">
@@ -1012,7 +1014,7 @@ document.querySelectorAll('.tl-track').forEach(tl=>{
 
       <!-- STEP 1 : Formulaire -->
       <div class="popup-step" id="popup-step-1">
-        <div class="popup__form-titre">Demande<br>d'inscription</div>
+        <div class="popup__form-titre">Demande d'inscription</div>
         <div class="popup__form-sub" style="margin-bottom:20px">Étape 1 sur 3 — Tes informations</div>
         <form id="inscriptionForm" onsubmit="goStep2(event)" novalidate>
           <!-- HONEYPOT (anti-spam) -->
