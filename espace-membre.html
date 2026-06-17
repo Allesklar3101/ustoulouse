@@ -395,6 +395,11 @@ footer{display:none!important}
 .dash-back:hover{background:rgba(255,255,255,.08);color:rgba(255,255,255,.7)}
 .dash-back i{font-size:17px}
 .dash-nav__item--logout{display:none}
+.mob-logout-block{display:none}
+.mob-logout-back{display:flex;align-items:center;gap:10px;padding:13px 16px;border-radius:12px;font-size:14px;font-weight:600;color:#64748b;text-decoration:none;transition:.2s;border:1.5px solid #e2e8f0;background:#f8fafc}
+.mob-logout-back:hover{background:#f1f5f9;color:#475569}
+.mob-logout-btn{display:flex;align-items:center;gap:10px;padding:13px 16px;border-radius:12px;font-size:14px;font-weight:600;color:#dc2626;background:#fff5f5;border:1.5px solid #fecaca;cursor:pointer;font-family:inherit;width:100%;transition:.2s}
+.mob-logout-btn:hover{background:#fee2e2}
 
 /* ── MAIN ── */
 .dash-main{flex:1;min-width:0;overflow-y:auto;display:flex;flex-direction:column}
@@ -609,8 +614,8 @@ footer{display:none!important}
   .nav{padding:0 20px}
   .nav__logo-img{width:52px;height:52px}
 
-  .dash-nav__item--logout{display:flex!important;color:rgba(255,180,180,.8)!important}
-  .dash-nav__item--logout:hover,.dash-nav__item--logout:active{background:rgba(239,68,68,.25)!important;color:#fca5a5!important}
+  .dash-nav__item--logout{display:none!important}
+  .mob-logout-block{display:flex!important;flex-direction:column;gap:10px;margin-top:24px;padding-top:20px;border-top:1px solid #eef2f7}
 
   /* Dashboard layout: sidebar becomes top bar */
   body.logged #dashboard{flex-direction:column}
@@ -1120,6 +1125,12 @@ footer{display:none!important}
           <div class="actions">
             <button class="btn-sec" onclick="fakeSave(this)"><i class="ti ti-lock"></i> Mettre à jour le mot de passe</button>
           </div>
+        </div>
+
+        <!-- Déconnexion / Retour au site — visible mobile uniquement -->
+        <div class="mob-logout-block">
+          <a href="/" class="mob-logout-back"><i class="ti ti-arrow-left"></i> Retour au site</a>
+          <button class="mob-logout-btn" onclick="doLogout()"><i class="ti ti-logout"></i> Déconnexion</button>
         </div>
 
       </div>
