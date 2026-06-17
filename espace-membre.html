@@ -552,6 +552,27 @@ body.logged footer{display:none!important}
 .cal-dot--hebdo{background:var(--brun)}
 .cal-dot--event{background:var(--bleu-clair)}
 .cal-nav-btn{background:none;border:none;cursor:pointer;width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--bleu);transition:.15s}.cal-nav-btn:hover{background:rgba(6,78,137,.08)}
+
+/* ── CALENDAR MODAL EVENT (cme-*) ── */
+.cme-item{}.cme-item--sep{margin-top:16px;padding-top:16px;border-top:1px solid #f0f4f8}
+.cme-row{display:flex;align-items:flex-start;gap:14px}
+.cme-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:20px}
+.cme-icon--hebdo{background:#2ea3f218;color:#2ea3f2}
+.cme-icon--match{background:#ef444418;color:#ef4444}
+.cme-icon--sortie{background:#22c55e18;color:#22c55e}
+.cme-icon--event{background:#064e8918;color:#064e89}
+.cme-body{flex:1;min-width:0}
+.cme-title{font-weight:700;font-size:15px;color:#1e293b;margin-bottom:4px}
+.cme-meta{display:flex;flex-wrap:wrap;gap:10px;font-size:13px;color:#64748b;margin-bottom:10px}
+.cme-meta__item{display:flex;align-items:center;gap:4px}
+.cme-meta__item i{font-size:14px}
+.cme-desc{font-size:13px;color:#475569;background:#f8fafc;border-radius:8px;padding:10px 12px;margin-bottom:10px}
+.cme-desc--hebdo{border-left:3px solid #2ea3f2}
+.cme-desc--match{border-left:3px solid #ef4444}
+.cme-desc--sortie{border-left:3px solid #22c55e}
+.cme-desc--event{border-left:3px solid #064e89}
+.cme-footer{display:flex;align-items:center;gap:10px}
+.cme-tag{font-size:11px;font-weight:700;padding:4px 10px;border-radius:100px;background:rgba(6,78,137,.1);color:var(--bleu);border:1px solid rgba(6,78,137,.18)}
 .cal-month-label{font-weight:700;font-size:15px;color:var(--bleu)}
 .cal-dow{text-align:center;font-size:11px;font-weight:700;color:#94a3b8;padding:8px 4px;text-transform:uppercase;letter-spacing:.05em;border-bottom:1px solid #f0f2f5}
 .cal-day.other-month{opacity:.35}
@@ -635,7 +656,7 @@ body.logged footer{display:none!important}
   #cal-modal-overlay{align-items:flex-start}
 
   /* Alert banner */
-  .alert-banner{font-size:12px!important;padding:12px 14px!important;display:inline-flex!important}
+  .alert-banner{font-size:12px!important;padding:12px 14px!important;display:inline-block!important}
 
   /* Events */
   .event-card{flex-direction:column;align-items:flex-start;gap:10px}
@@ -649,7 +670,7 @@ body.logged footer{display:none!important}
   /* Sport tabs */
   .sport-tabs{flex-wrap:wrap;gap:6px}
   .sport-tab{font-size:12px!important;padding:6px 14px!important;border:1px solid var(--bleu)!important;color:var(--bleu)!important}
-  .sport-tab.active{background:var(--bleu);color:#fff}
+  .sport-tab.active{background:var(--bleu)!important;color:#fff!important}
 
   /* Buttons */
   .btn-sec{padding:8px 16px!important}
@@ -1262,24 +1283,23 @@ function selectDay(date){
   evs.forEach(function(ev,idx){
     var typeLabel={hebdo:'Entraînement',match:'Match',sortie:'Sortie',event:'Événement'}[ev.type]||ev.type;
     var typeIcon={hebdo:'ti-ball-football',match:'ti-trophy',sortie:'ti-mountain',event:'ti-calendar-event'}[ev.type]||'ti-calendar-event';
-    var typeColor={hebdo:'#2ea3f2',match:'#ef4444',sortie:'#22c55e',event:'#064e89'}[ev.type]||'#064e89';
-    html+='<div style="'+(idx>0?'margin-top:16px;padding-top:16px;border-top:1px solid #f0f4f8;':'')+'">';
-    html+='<div style="display:flex;align-items:flex-start;gap:14px">';
-    html+='<div style="width:44px;height:44px;border-radius:12px;background:'+typeColor+'18;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:20px;color:'+typeColor+'"><i class="ti '+typeIcon+'"></i></div>';
-    html+='<div style="flex:1;min-width:0">';
-    html+='<div style="font-weight:700;font-size:15px;color:#1e293b;margin-bottom:4px">'+ev.title+'</div>';
-    html+='<div style="display:flex;flex-wrap:wrap;gap:10px;font-size:13px;color:#64748b;margin-bottom:10px">';
-    html+='<span><i class="ti ti-clock" style="margin-right:4px"></i>'+ev.time+'</span>';
-    html+='<span><i class="ti ti-map-pin" style="margin-right:4px"></i>'+ev.lieu+'</span>';
-    if(ev.adversaire) html+='<span><i class="ti ti-shield" style="margin-right:4px"></i>vs '+ev.adversaire+'</span>';
-    if(ev.coach) html+='<span><i class="ti ti-user" style="margin-right:4px"></i>'+ev.coach+'</span>';
-    if(ev.competition) html+='<span><i class="ti ti-tournament" style="margin-right:4px"></i>'+ev.competition+'</span>';
-    if(ev.distance) html+='<span><i class="ti ti-route" style="margin-right:4px"></i>'+ev.distance+'</span>';
-    if(ev.denivele) html+='<span><i class="ti ti-trending-up" style="margin-right:4px"></i>'+ev.denivele+'</span>';
+    html+='<div class="cme-item'+(idx>0?' cme-item--sep':'')+'">';
+    html+='<div class="cme-row">';
+    html+='<div class="cme-icon cme-icon--'+ev.type+'"><i class="ti '+typeIcon+'"></i></div>';
+    html+='<div class="cme-body">';
+    html+='<div class="cme-title">'+ev.title+'</div>';
+    html+='<div class="cme-meta">';
+    html+='<span class="cme-meta__item"><i class="ti ti-clock"></i>'+ev.time+'</span>';
+    html+='<span class="cme-meta__item"><i class="ti ti-map-pin"></i>'+ev.lieu+'</span>';
+    if(ev.adversaire) html+='<span class="cme-meta__item"><i class="ti ti-shield"></i>vs '+ev.adversaire+'</span>';
+    if(ev.coach) html+='<span class="cme-meta__item"><i class="ti ti-user"></i>'+ev.coach+'</span>';
+    if(ev.competition) html+='<span class="cme-meta__item"><i class="ti ti-tournament"></i>'+ev.competition+'</span>';
+    if(ev.distance) html+='<span class="cme-meta__item"><i class="ti ti-route"></i>'+ev.distance+'</span>';
+    if(ev.denivele) html+='<span class="cme-meta__item"><i class="ti ti-trending-up"></i>'+ev.denivele+'</span>';
     html+='</div>';
-    if(ev.description) html+='<div style="font-size:13px;color:#475569;background:#f8fafc;border-radius:8px;padding:10px 12px;margin-bottom:10px;border-left:3px solid '+typeColor+'">'+ev.description+'</div>';
-    html+='<div style="display:flex;align-items:center;gap:10px">';
-    html+='<span style="font-size:11px;font-weight:700;padding:4px 10px;border-radius:100px;background:rgba(6,78,137,.1);color:var(--bleu);border:1px solid rgba(6,78,137,.18)">'+typeLabel+'</span>';
+    if(ev.description) html+='<div class="cme-desc cme-desc--'+ev.type+'">'+ev.description+'</div>';
+    html+='<div class="cme-footer">';
+    html+='<span class="cme-tag">'+typeLabel+'</span>';
     html+='<div class="rsvp" id="rsvp-'+date+'-'+idx+'"><button type="button" class="rsvp__btn rsvp__btn--yes" onclick="rsvpClick(this,\'yes\')" title="Présent"><i class="ti ti-check"></i></button><button type="button" class="rsvp__btn rsvp__btn--no" onclick="rsvpClick(this,\'no\')" title="Absent"><i class="ti ti-x"></i></button></div>';
     html+='</div>';
     html+='</div></div></div>';
