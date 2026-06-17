@@ -394,6 +394,7 @@ footer{display:none!important}
 .dash-back{display:flex;align-items:center;gap:11px;padding:10px 14px;border-radius:12px;font-size:13px;font-weight:600;color:rgba(255,255,255,.35);text-decoration:none;transition:.2s;margin-bottom:4px}
 .dash-back:hover{background:rgba(255,255,255,.08);color:rgba(255,255,255,.7)}
 .dash-back i{font-size:17px}
+.dash-nav__item--logout{display:none}
 
 /* ── MAIN ── */
 .dash-main{flex:1;min-width:0;overflow-y:auto;display:flex;flex-direction:column}
@@ -607,6 +608,9 @@ footer{display:none!important}
   /* Nav */
   .nav{padding:0 20px}
   .nav__logo-img{width:52px;height:52px}
+
+  .dash-nav__item--logout{display:flex!important;color:rgba(255,180,180,.8)!important}
+  .dash-nav__item--logout:hover,.dash-nav__item--logout:active{background:rgba(239,68,68,.25)!important;color:#fca5a5!important}
 
   /* Dashboard layout: sidebar becomes top bar */
   body.logged #dashboard{flex-direction:column}
@@ -826,6 +830,9 @@ footer{display:none!important}
       </button>
       <button class="dash-nav__item" data-tab="compte" onclick="showTab('compte')">
         <i class="ti ti-user-circle"></i><span class="dash-nav__label">Mon<span class="mob-br"> </span><span class="mob-nl">compte</span></span>
+      </button>
+      <button class="dash-nav__item dash-nav__item--logout" onclick="doLogout()">
+        <i class="ti ti-logout"></i><span class="dash-nav__label">Quitter</span>
       </button>
     </nav>
     <div class="dash-sidebar__footer">
