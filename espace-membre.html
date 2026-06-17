@@ -590,10 +590,11 @@ body.logged footer{display:none!important}
   .dash-sidebar__footer{display:none}
   .dash-nav{flex-direction:row;padding:0;overflow-x:auto;gap:0;flex:1;scrollbar-width:none}
   .dash-nav::-webkit-scrollbar{display:none}
-  .dash-nav__item{flex-direction:column;gap:2px;padding:10px 12px;border-radius:0;font-size:10px;justify-content:center;text-align:center;flex:1;min-width:64px;border-left:none}
-  .dash-nav__item.active{background:var(--brun)}
-  .dash-nav__item i{width:28px;height:28px;font-size:18px;border-radius:8px}
-  .dash-nav__label{display:block;font-size:10px;line-height:1.1}
+  .dash-nav__item{flex-direction:column;gap:3px;padding:8px 6px;border-radius:0;justify-content:center;text-align:center;flex:1;min-width:60px;border-left:none;font-size:9px;font-weight:600;letter-spacing:.03em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+  .dash-nav__item.active{background:var(--brun);color:#fff}
+  .dash-nav__item i{width:30px;height:30px;font-size:20px;border-radius:8px;background:transparent;color:inherit}
+  .dash-nav__item.active i{background:rgba(255,255,255,.15);color:#fff}
+  .dash-nav__label{display:block;font-size:9px;line-height:1.2;white-space:normal;max-width:64px}
   .dash-main{min-height:calc(100vh - 56px);overflow-x:hidden}
 
   /* Topbar */
@@ -628,9 +629,9 @@ body.logged footer{display:none!important}
   .cal-day-num{width:24px;height:24px;font-size:12px}
   .cal-dot{width:5px;height:5px}
 
-  /* Calendar modal */
-  #cal-modal{width:100%!important;max-width:100%!important;top:auto!important;left:0!important;right:0!important;bottom:0!important;transform:none!important;border-radius:20px 20px 0 0;max-height:85svh}
-  #cal-modal-overlay{align-items:flex-end}
+  /* Calendar modal — popup centré */
+  #cal-modal{width:95%!important;max-width:100%!important;top:7.5vh!important;left:2.5%!important;right:2.5%!important;bottom:auto!important;transform:none!important;border-radius:10px;max-height:85vh;height:fit-content;margin:0}
+  #cal-modal-overlay{align-items:flex-start}
 
   /* Alert banner */
   .alert-banner{font-size:12px;padding:12px 14px}
@@ -639,9 +640,19 @@ body.logged footer{display:none!important}
   .event-card{flex-direction:column;align-items:flex-start;gap:10px}
   .event-card__date{min-width:auto;width:100%;display:flex;flex-direction:row;align-items:center;gap:12px;border-radius:10px;padding:10px 14px}
 
+  /* Cards */
+  .card{padding:18px}
+
+  /* Adhésion banner */
+  .adh-banner{display:block}
+
   /* Sport tabs */
   .sport-tabs{flex-wrap:wrap;gap:6px}
-  .sport-tab{font-size:12px;padding:6px 14px}
+  .sport-tab{font-size:12px;padding:6px 14px;border:1px solid var(--bleu);color:var(--bleu)}
+  .sport-tab.active{background:var(--bleu);color:#fff}
+
+  /* Buttons */
+  .btn-sec{padding:8px 16px}
 
   /* Doc rows */
   .doc-row{flex-wrap:wrap;gap:6px}
@@ -654,8 +665,8 @@ body.logged footer{display:none!important}
   .kpi__val{font-size:20px}
   .kpi__label{font-size:10px}
   .dash-topbar__title{font-size:16px}
-  .dash-nav__label{display:none}
-  .dash-nav__item{padding:8px 10px;min-width:52px}
+  .dash-nav__label{font-size:8px}
+  .dash-nav__item{padding:7px 4px;min-width:52px}
   .cal-day{min-height:38px}
   .cal-day-num{width:22px;height:22px;font-size:11px}
   .em-login-card{padding:24px 16px}
