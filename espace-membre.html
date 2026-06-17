@@ -569,27 +569,99 @@ body.logged footer{display:none!important}
 .sec-divider{height:1px;background:var(--border);margin:24px 0}
 
 /* ── RESPONSIVE ── */
+
+/* ─── TABLET (≤1024px) ─── */
+@media(max-width:1024px){
+  .dash-sidebar{width:220px}
+  .dash-sidebar__brand img{width:38px;height:38px}
+  .dash-topbar{padding:20px 24px 16px}
+  .dash-content{padding:24px}
+  .kpi-strip{gap:12px}
+  .kpi{padding:16px 14px}
+  #cal-modal{width:440px}
+}
+
+/* ─── MOBILE (≤768px) ─── */
 @media(max-width:768px){
-  
-  .dash-sidebar{width:100%;height:auto;min-height:auto;flex-direction:row;position:static;border-right:none;background:var(--bleu)}
+  /* Dashboard layout: sidebar becomes top bar */
+  body.logged #dashboard{flex-direction:column}
+  .dash-sidebar{width:100%;height:auto;min-height:auto;flex-direction:row;position:sticky;top:0;z-index:100;border-right:none;background:var(--bleu);box-shadow:0 2px 12px rgba(0,0,0,.25)}
   .dash-sidebar__brand,.dash-sidebar__member{display:none}
-  .dash-nav{flex-direction:row;padding:0;overflow-x:auto;gap:0}
-  .dash-nav__item{flex-direction:column;gap:3px;padding:12px 14px;border-radius:0;font-size:11px;justify-content:center;text-align:center;flex:1;min-width:70px}
-  .dash-nav__item.active{background:var(--brun)}
-  .dash-nav__item i{font-size:20px}
-  .dash-nav__label{display:none}
   .dash-sidebar__footer{display:none}
-  .dash-main{min-height:calc(100vh - 60px)}
-  .dash-topbar,.dash-content{padding-left:18px;padding-right:18px}
-  .dash-topbar{padding-top:18px}
-  .dash-content{padding-bottom:40px}
-  .kpi-strip{grid-template-columns:1fr 1fr}
+  .dash-nav{flex-direction:row;padding:0;overflow-x:auto;gap:0;flex:1;scrollbar-width:none}
+  .dash-nav::-webkit-scrollbar{display:none}
+  .dash-nav__item{flex-direction:column;gap:2px;padding:10px 12px;border-radius:0;font-size:10px;justify-content:center;text-align:center;flex:1;min-width:64px;border-left:none}
+  .dash-nav__item.active{background:var(--brun)}
+  .dash-nav__item i{width:28px;height:28px;font-size:18px;border-radius:8px}
+  .dash-nav__label{display:block;font-size:10px;line-height:1.1}
+  .dash-main{min-height:calc(100vh - 56px);overflow-x:hidden}
+
+  /* Topbar */
+  .dash-topbar{padding:16px 18px 14px;position:static;flex-wrap:wrap;gap:10px}
+  .dash-topbar__title{font-size:18px}
+  .dash-topbar__date{display:none}
+  .dash-content{padding:16px 18px 40px}
+
+  /* Hero login */
+  .hero{grid-template-columns:1fr;min-height:100svh}
+  .hero__left{display:none}
+  .hero__right{padding:60px 20px;background:transparent;backdrop-filter:none;border-left:none;align-items:flex-start}
+  .em-login-card{width:100%;max-width:420px;padding:28px 20px}
+
+  /* KPI grid */
+  .kpi-strip{grid-template-columns:1fr 1fr;gap:10px}
   .kpi-strip .kpi:last-child{display:none}
+  .kpi{padding:14px 12px}
+  .kpi__val{font-size:24px}
+
+  /* Cards */
   .grid-2{grid-template-columns:1fr}
   .profile-header{flex-direction:column;align-items:flex-start;gap:14px}
   .adh-banner{flex-wrap:wrap}
+
+  /* Calendar */
+  .cal-wrap{border-radius:12px}
+  .cal-header{padding:14px 16px}
+  .cal-month-label{font-size:14px}
+  .cal-dow{font-size:10px;padding:6px 2px}
+  .cal-day{min-height:44px;padding:4px 2px 3px}
+  .cal-day-num{width:24px;height:24px;font-size:12px}
+  .cal-dot{width:5px;height:5px}
+
+  /* Calendar modal */
+  #cal-modal{width:100%!important;max-width:100%!important;top:auto!important;left:0!important;right:0!important;bottom:0!important;transform:none!important;border-radius:20px 20px 0 0;max-height:85svh}
+  #cal-modal-overlay{align-items:flex-end}
+
+  /* Alert banner */
+  .alert-banner{font-size:12px;padding:12px 14px}
+
+  /* Events */
+  .event-card{flex-direction:column;align-items:flex-start;gap:10px}
+  .event-card__date{min-width:auto;width:100%;display:flex;flex-direction:row;align-items:center;gap:12px;border-radius:10px;padding:10px 14px}
+
+  /* Sport tabs */
+  .sport-tabs{flex-wrap:wrap;gap:6px}
+  .sport-tab{font-size:12px;padding:6px 14px}
+
+  /* Doc rows */
+  .doc-row{flex-wrap:wrap;gap:6px}
 }
-  
+
+/* ─── SMALL MOBILE (≤480px) ─── */
+@media(max-width:480px){
+  .kpi-strip{grid-template-columns:1fr 1fr}
+  .kpi{padding:12px 10px}
+  .kpi__val{font-size:20px}
+  .kpi__label{font-size:10px}
+  .dash-topbar__title{font-size:16px}
+  .dash-nav__label{display:none}
+  .dash-nav__item{padding:8px 10px;min-width:52px}
+  .cal-day{min-height:38px}
+  .cal-day-num{width:22px;height:22px;font-size:11px}
+  .em-login-card{padding:24px 16px}
+  .em-login-card h2{font-size:20px}
+}
+
 </style>
 </head>
 <body>
