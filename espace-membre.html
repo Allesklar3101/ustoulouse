@@ -47,25 +47,50 @@ body.logged .bg,body.logged .bg-overlay{display:none}
 body.logged .login-wrap,body.logged .login-back{display:none}
 #dashboard{display:none}
 body.logged #dashboard{display:block}
-/* Topbar */
-.dash-top{display:flex;align-items:center;justify-content:space-between;padding:18px 32px;background:#fff;box-shadow:0 2px 12px rgba(0,0,0,.07);position:sticky;top:0;z-index:10}
-.dash-top__left{display:flex;align-items:center;gap:14px}
-.dash-logo{font-weight:900;font-size:18px;color:var(--bleu);letter-spacing:-0.5px}
-.dash-top__hi{font-size:12px;color:#8a96a3}
-.dash-top__name{font-size:16px;font-weight:800;color:#1a1a2e}
-.dash-logout{display:flex;align-items:center;gap:8px;background:#f4f6f9;border:1.5px solid #e0e6ef;color:#1a1a2e;border-radius:100px;padding:10px 18px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;transition:.2s}
-.dash-logout:hover{background:#fde8e8;border-color:#f56565;color:#c0392b}
-/* Layout */
-.dash-wrap{max-width:1100px;margin:0 auto;padding:32px 24px 60px}
-/* Main tabs */
-.dash-tabs{display:flex;gap:10px;margin-bottom:28px;flex-wrap:wrap}
-.dash-tab{display:flex;align-items:center;gap:8px;background:#fff;border:1.5px solid #e0e6ef;color:#4a5568;border-radius:100px;padding:11px 22px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;transition:.2s}
-.dash-tab i{font-size:18px}
-.dash-tab.active{background:var(--bleu);color:#fff;border-color:var(--bleu)}
-.dash-tab:hover:not(.active){background:#edf2fb;border-color:var(--bleu-clair);color:var(--bleu)}
+/* ── SIDEBAR LAYOUT ── */
+#dashboard{display:none;min-height:100vh}
+body.logged #dashboard{display:flex}
+
+.dash-sidebar{width:240px;flex-shrink:0;background:#fff;border-right:1px solid #e9ecf0;min-height:100vh;display:flex;flex-direction:column;position:sticky;top:0;height:100vh;overflow-y:auto}
+.dash-sidebar__brand{padding:28px 24px 20px;border-bottom:1px solid #e9ecf0}
+.dash-sidebar__logo{font-size:20px;font-weight:900;color:var(--bleu);letter-spacing:-0.5px}
+.dash-sidebar__logo span{color:var(--bleu-clair)}
+.dash-sidebar__member{padding:20px 24px;border-bottom:1px solid #e9ecf0;display:flex;align-items:center;gap:12px}
+.dash-avatar{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--bleu-clair),var(--bleu));display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;color:#fff;flex-shrink:0}
+.dash-sidebar__hi{font-size:11px;color:#8a96a3;text-transform:uppercase;letter-spacing:.5px}
+.dash-sidebar__name{font-size:13px;font-weight:800;color:#1a1a2e;margin-top:1px}
+
+.dash-nav{padding:16px 12px;flex:1}
+.dash-nav__item{display:flex;align-items:center;gap:12px;padding:11px 14px;border-radius:12px;font-size:14px;font-weight:600;color:#6b7280;cursor:pointer;border:none;background:none;font-family:inherit;width:100%;text-align:left;transition:.15s;margin-bottom:2px}
+.dash-nav__item i{font-size:20px;flex-shrink:0}
+.dash-nav__item:hover{background:#f4f6f9;color:#1a1a2e}
+.dash-nav__item.active{background:#edf2fb;color:var(--bleu);font-weight:700}
+.dash-nav__item.active i{color:var(--bleu-clair)}
+
+.dash-sidebar__footer{padding:16px 12px;border-top:1px solid #e9ecf0}
+.dash-logout{display:flex;align-items:center;gap:10px;padding:11px 14px;border-radius:12px;font-size:14px;font-weight:600;color:#6b7280;cursor:pointer;border:none;background:none;font-family:inherit;width:100%;text-align:left;transition:.15s}
+.dash-logout:hover{background:#fff0f0;color:#c0392b}
+.dash-logout i{font-size:20px}
+
+.dash-main{flex:1;min-width:0;background:#f4f6f9;padding:36px 40px 60px;overflow-y:auto}
 .dash-panel{display:none}
-.dash-panel.active{display:block;animation:fadeUp .4s ease}
-@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.dash-panel.active{display:block;animation:fadeUp .35s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+/* ── MOBILE bottom nav ── */
+@media(max-width:768px){
+  body.logged #dashboard{flex-direction:column}
+  .dash-sidebar{width:100%;height:auto;min-height:auto;flex-direction:row;flex-wrap:wrap;position:static;border-right:none;border-bottom:1px solid #e9ecf0}
+  .dash-sidebar__brand,.dash-sidebar__member{display:none}
+  .dash-nav{display:flex;flex-direction:row;padding:0;overflow-x:auto;gap:0;flex:none;width:100%}
+  .dash-nav__item{border-radius:0;padding:14px 16px;font-size:12px;flex-direction:column;gap:4px;flex:1;justify-content:center;text-align:center;min-width:80px;margin-bottom:0}
+  .dash-nav__item i{font-size:22px}
+  .dash-nav__item.active{background:none;border-bottom:3px solid var(--bleu);color:var(--bleu)}
+  .dash-sidebar__footer{padding:0;border-top:none}
+  .dash-logout{border-radius:0;padding:14px 16px;font-size:12px;flex-direction:column;gap:4px;justify-content:center;text-align:center;min-width:70px;flex:0 0 auto}
+  .dash-logout i{font-size:22px}
+  .dash-main{padding:20px 16px 40px}
+}
 /* Cards */
 .card{background:#fff;border-radius:20px;box-shadow:0 4px 24px rgba(0,0,0,.07);padding:28px;margin-bottom:20px}
 .card__title{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:1px;margin-bottom:22px;display:flex;align-items:center;gap:10px;color:#1a1a2e;border-left:3px solid var(--bleu-clair);padding-left:12px}
@@ -182,23 +207,31 @@ body.logged #dashboard{display:block}
 
 <!-- ===================== DASHBOARD ===================== -->
 <div id="dashboard">
-  <div class="dash-top">
-    <div class="dash-top__left">
-      <div class="dash-logo">UST Toulouse</div>
+
+  <!-- SIDEBAR -->
+  <aside class="dash-sidebar">
+    <div class="dash-sidebar__brand">
+      <div class="dash-sidebar__logo">UST <span>Toulouse</span></div>
+    </div>
+    <div class="dash-sidebar__member">
+      <div class="dash-avatar">AD</div>
       <div>
-        <div class="dash-top__hi">Bonjour,</div>
-        <div class="dash-top__name">Alexandre Dupont</div>
+        <div class="dash-sidebar__hi">Espace membre</div>
+        <div class="dash-sidebar__name">Alexandre Dupont</div>
       </div>
     </div>
-    <button class="dash-logout" onclick="doLogout()"><i class="ti ti-logout"></i> Déconnexion</button>
-  </div>
-
-  <div class="dash-wrap">
-    <div class="dash-tabs">
-      <button class="dash-tab active" data-tab="profil" onclick="showTab('profil')"><i class="ti ti-user"></i> Profil</button>
-      <button class="dash-tab" data-tab="adhesions" onclick="showTab('adhesions')"><i class="ti ti-id-badge-2"></i> Mes adhésions</button>
-      <button class="dash-tab" data-tab="sport" onclick="showTab('sport')"><i class="ti ti-ballpen"></i> Mon sport</button>
+    <nav class="dash-nav">
+      <button class="dash-nav__item active" data-tab="profil" onclick="showTab('profil')"><i class="ti ti-user"></i> Profil</button>
+      <button class="dash-nav__item" data-tab="adhesions" onclick="showTab('adhesions')"><i class="ti ti-id-badge-2"></i> Mes adhésions</button>
+      <button class="dash-nav__item" data-tab="sport" onclick="showTab('sport')"><i class="ti ti-ball-football"></i> Mon sport</button>
+    </nav>
+    <div class="dash-sidebar__footer">
+      <button class="dash-logout" onclick="doLogout()"><i class="ti ti-logout"></i> Déconnexion</button>
     </div>
+  </aside>
+
+  <!-- CONTENU PRINCIPAL -->
+  <main class="dash-main">
 
     <!-- PROFIL -->
     <div class="dash-panel active" id="panel-profil">
@@ -374,7 +407,7 @@ body.logged #dashboard{display:block}
       </div>
     </div>
 
-  </div>
+  </main>
 </div>
 
 <script>
@@ -405,8 +438,8 @@ function doLogout(){
   window.scrollTo(0,0);
 }
 function showTab(name){
-  var tabs=document.querySelectorAll('.dash-tab');
-  for(var i=0;i<tabs.length;i++) tabs[i].classList.toggle('active',tabs[i].getAttribute('data-tab')===name);
+  var items=document.querySelectorAll('.dash-nav__item');
+  for(var i=0;i<items.length;i++) items[i].classList.toggle('active',items[i].getAttribute('data-tab')===name);
   var panels=document.querySelectorAll('.dash-panel');
   for(var j=0;j<panels.length;j++) panels[j].classList.remove('active');
   document.getElementById('panel-'+name).classList.add('active');
