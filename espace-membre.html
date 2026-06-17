@@ -41,13 +41,6 @@ body{font-family:'Poppins',sans-serif;background:#0a0f1e;min-height:100vh;displa
 .login-demo{font-size:11px;color:#9aa3b0;margin-top:18px;line-height:1.5}
 
 /* ===================== DASHBOARD ===================== */
-:root{--bleu:#064e89;--bleu-clair:#2ea3f2;--brun:#8b664b;--brun-clair:#b8936a}
-body.logged{background:#f4f6f9;color:#1a1a2e;display:block;align-items:initial;justify-content:initial;overflow:auto}
-body.logged .bg,body.logged .bg-overlay{display:none}
-body.logged .login-wrap,body.logged .login-back{display:none}
-body.logged .nav{z-index:1000}
-#dashboard{display:none}
-body.logged #dashboard{display:block}
 /* ── SIDEBAR LAYOUT ── */
 :root{--bleu:#064e89;--bleu-clair:#2ea3f2;--brun:#8b664b;--brun-clair:#b8936a;--surface:#f7f8fc;--white:#fff;--text:#111827;--muted:#6b7280;--border:#e8eaf0;--radius:16px;--shadow:0 2px 16px rgba(0,0,0,.06)}
 #dashboard{display:none;min-height:100vh;background:var(--surface)}
@@ -77,6 +70,9 @@ body.logged{background:var(--surface);overflow:auto;display:block;align-items:in
 .dash-logout{display:flex;align-items:center;gap:11px;padding:11px 14px;border-radius:12px;font-size:13px;font-weight:600;color:rgba(255,255,255,.45);cursor:pointer;border:none;background:transparent;font-family:inherit;width:100%;text-align:left;transition:.2s}
 .dash-logout:hover{background:rgba(239,68,68,.25);color:#fca5a5}
 .dash-logout i{font-size:19px}
+.dash-back{display:flex;align-items:center;gap:11px;padding:10px 14px;border-radius:12px;font-size:13px;font-weight:600;color:rgba(255,255,255,.35);text-decoration:none;transition:.2s;margin-bottom:4px}
+.dash-back:hover{background:rgba(255,255,255,.08);color:rgba(255,255,255,.7)}
+.dash-back i{font-size:17px}
 
 /* ── MAIN ── */
 .dash-main{flex:1;min-width:0;overflow-y:auto;display:flex;flex-direction:column}
@@ -93,7 +89,8 @@ body.logged{background:var(--surface);overflow:auto;display:block;align-items:in
 
 /* ── KPI STRIP (top of profil + adhesions) ── */
 .kpi-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:28px}
-.kpi{background:var(--white);border-radius:var(--radius);padding:20px 22px;box-shadow:var(--shadow);border:1px solid var(--border);display:flex;align-items:center;gap:14px}
+.kpi{background:var(--white);border-radius:var(--radius);padding:20px 22px;box-shadow:var(--shadow);border:1px solid var(--border);display:flex;align-items:center;gap:14px;cursor:pointer;transition:.2s}
+.kpi:hover{box-shadow:0 6px 24px rgba(0,0,0,.1);transform:translateY(-2px)}
 .kpi__icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
 .kpi__icon--bleu{background:#eef6ff;color:var(--bleu-clair)}
 .kpi__icon--green{background:#e8faf0;color:#16a34a}
@@ -110,7 +107,8 @@ body.logged{background:var(--surface);overflow:auto;display:block;align-items:in
 @keyframes fadeUp{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 
 /* ── CARDS ── */
-.card{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid var(--border);padding:26px;margin-bottom:16px}
+.card{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid var(--border);padding:26px;margin-bottom:16px;transition:box-shadow .2s}
+.card:hover{box-shadow:0 6px 28px rgba(0,0,0,.09)}
 .card--flush{padding:0;overflow:hidden}
 .card__head{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px}
 .card__label{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:var(--muted)}
@@ -118,6 +116,8 @@ body.logged{background:var(--surface);overflow:auto;display:block;align-items:in
 /* ── PROFILE HEADER ── */
 .profile-header{background:linear-gradient(135deg,var(--bleu) 0%,#1a6abf 100%);border-radius:var(--radius);padding:28px 30px;margin-bottom:16px;display:flex;align-items:center;gap:20px;position:relative;overflow:hidden}
 .profile-header::after{content:"";position:absolute;top:-40px;right:-40px;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,.05)}
+.profile-header::before{content:"";position:absolute;bottom:-60px;left:60px;width:160px;height:160px;border-radius:50%;background:rgba(46,163,242,.12)}
+.sport-tag{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;background:rgba(255,255,255,.18);border-radius:100px;padding:4px 10px;color:#fff;margin-top:8px;margin-right:4px}
 .profile-avatar{width:64px;height:64px;border-radius:18px;background:rgba(255,255,255,.2);backdrop-filter:blur(8px);border:2px solid rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:900;color:#fff;flex-shrink:0;letter-spacing:.5px;position:relative;z-index:1}
 .profile-header__info{flex:1;position:relative;z-index:1}
 .profile-header__name{font-size:20px;font-weight:900;color:#fff;margin-bottom:2px}
@@ -161,6 +161,10 @@ body.logged{background:var(--surface);overflow:auto;display:block;align-items:in
 .adh-badge--ok{background:#dcfce7;color:#15803d}
 .adh-badge--warn{background:#fff7ed;color:#c2410c}
 .adh-badge--pending{background:#f1f5f9;color:#64748b}
+.progress-wrap{margin-top:16px}
+.progress-label{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-bottom:6px}
+.progress-bar{height:6px;background:#f0f0f0;border-radius:100px;overflow:hidden}
+.progress-fill{height:100%;border-radius:100px;background:linear-gradient(90deg,var(--bleu-clair),var(--bleu));transition:width .6s ease}
 
 /* ── INFO ROW ── */
 .info-row{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid #f3f4f6;font-size:14px}
@@ -177,8 +181,12 @@ body.logged{background:var(--surface);overflow:auto;display:block;align-items:in
 
 /* ── EVENT SLOTS ── */
 .event-list{display:flex;flex-direction:column;gap:10px}
-.event{display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:12px;background:#f9fafb;border:1px solid var(--border);transition:.15s}
-.event:hover{background:#f3f4f6}
+.event{display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:12px;background:var(--white);border:1px solid var(--border);transition:.18s;border-left:3px solid var(--border)}
+.event--match{border-left-color:#e74c3c}
+.event--sortie{border-left-color:#16a34a}
+.event--hebdo{border-left-color:#7c3aed}
+.event--event{border-left-color:var(--bleu-clair)}
+.event:hover{background:#f8f9fc;border-color:#d1d5db}
 .event__date{width:46px;height:46px;border-radius:11px;background:var(--bleu);display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;color:#fff;line-height:1}
 .event__date b{font-size:17px;font-weight:900}
 .event__date small{font-size:9px;text-transform:uppercase;opacity:.75;margin-bottom:1px}
@@ -200,6 +208,9 @@ body.logged{background:var(--surface);overflow:auto;display:block;align-items:in
 .pres-btn.pres-no.active{background:#fee2e2;border-color:#f87171;color:#b91c1c}
 
 .dash-intro{font-size:14px;color:var(--muted);margin-bottom:20px;line-height:1.6}
+.alert-banner{display:flex;align-items:center;gap:12px;background:#fff7ed;border:1px solid #fed7aa;border-radius:12px;padding:14px 18px;margin-bottom:20px;font-size:13px;color:#92400e;font-weight:500}
+.alert-banner i{font-size:18px;color:#ea580c;flex-shrink:0}
+.alert-banner a{color:#c2410c;font-weight:700;text-decoration:underline;cursor:pointer}
 .sec-divider{height:1px;background:var(--border);margin:24px 0}
 
 /* ── RESPONSIVE ── */
@@ -351,6 +362,7 @@ body.logged{background:var(--surface);overflow:auto;display:block;align-items:in
       </button>
     </nav>
     <div class="dash-sidebar__footer">
+      <a href="/" class="dash-back"><i class="ti ti-arrow-left"></i> Retour au site</a>
       <button class="dash-logout" onclick="doLogout()"><i class="ti ti-logout"></i> Déconnexion</button>
     </div>
   </aside>
@@ -371,17 +383,20 @@ body.logged{background:var(--surface);overflow:auto;display:block;align-items:in
       </div>
       <div class="dash-content">
 
+        <!-- Alert -->
+        <div class="alert-banner"><i class="ti ti-alert-triangle"></i> Votre dossier Football est incomplet — <a onclick="showTab('adhesions')">certificat médical manquant</a>. Veuillez le remettre au secrétariat.</div>
+
         <!-- KPIs -->
         <div class="kpi-strip">
           <div class="kpi">
             <div class="kpi__icon kpi__icon--bleu"><i class="ti ti-id-badge-2"></i></div>
             <div><div class="kpi__val">2</div><div class="kpi__label">Adhésions actives</div></div>
           </div>
-          <div class="kpi">
+          <div class="kpi" onclick="showTab('adhesions')" title="Voir mes adhésions">
             <div class="kpi__icon kpi__icon--orange"><i class="ti ti-alert-triangle"></i></div>
             <div><div class="kpi__val">1</div><div class="kpi__label">Document manquant</div></div>
           </div>
-          <div class="kpi">
+          <div class="kpi" onclick="showTab('sport')" title="Voir mon planning">
             <div class="kpi__icon kpi__icon--green"><i class="ti ti-calendar-event"></i></div>
             <div><div class="kpi__val">3</div><div class="kpi__label">Événements à venir</div></div>
           </div>
@@ -392,7 +407,7 @@ body.logged{background:var(--surface);overflow:auto;display:block;align-items:in
           <div class="profile-avatar">AD</div>
           <div class="profile-header__info">
             <div class="profile-header__name">Alexandre Dupont</div>
-            <div class="profile-header__meta">alex_du31@hotmail.com · Football & Randonnée</div>
+            <div class="profile-header__meta">alex_du31@hotmail.com</div><div><span class="sport-tag"><i class="ti ti-ball-football"></i> Football</span><span class="sport-tag"><i class="ti ti-mountain"></i> Randonnée</span></div>
           </div>
           <button class="profile-header__edit" onclick="toggleEdit()"><i class="ti ti-pencil"></i> Modifier</button>
         </div>
@@ -543,7 +558,7 @@ body.logged{background:var(--surface);overflow:auto;display:block;align-items:in
 
           <p class="sec-title">Entraînements</p>
           <div class="event-list">
-            <div class="event">
+            <div class="event event--hebdo">
               <div class="event__date"><small>Mar</small><b>19h</b></div>
               <div class="event__info">
                 <div class="event__title">Entraînement collectif</div>
@@ -554,7 +569,7 @@ body.logged{background:var(--surface);overflow:auto;display:block;align-items:in
                 <div class="presence"><button type="button" class="pres-btn pres-yes" onclick="setPresence(this)"><i class="ti ti-check"></i> Présent</button><button type="button" class="pres-btn pres-no" onclick="setPresence(this)"><i class="ti ti-x"></i> Absent</button></div>
               </div>
             </div>
-            <div class="event">
+            <div class="event event--hebdo">
               <div class="event__date"><small>Jeu</small><b>19h</b></div>
               <div class="event__info">
                 <div class="event__title">Entraînement technique</div>
@@ -569,7 +584,7 @@ body.logged{background:var(--surface);overflow:auto;display:block;align-items:in
 
           <p class="sec-title">Matchs & événements</p>
           <div class="event-list">
-            <div class="event">
+            <div class="event event--match">
               <div class="event__date"><small>Sam</small><b>21</b></div>
               <div class="event__info">
                 <div class="event__title">UST Toulouse — FC Blagnac</div>
@@ -580,7 +595,7 @@ body.logged{background:var(--surface);overflow:auto;display:block;align-items:in
                 <div class="presence"><button type="button" class="pres-btn pres-yes" onclick="setPresence(this)"><i class="ti ti-check"></i> Présent</button><button type="button" class="pres-btn pres-no" onclick="setPresence(this)"><i class="ti ti-x"></i> Absent</button></div>
               </div>
             </div>
-            <div class="event">
+            <div class="event event--match">
               <div class="event__date"><small>Sam</small><b>28</b></div>
               <div class="event__info">
                 <div class="event__title">Colomiers SC — UST Toulouse</div>
@@ -591,7 +606,7 @@ body.logged{background:var(--surface);overflow:auto;display:block;align-items:in
                 <div class="presence"><button type="button" class="pres-btn pres-yes" onclick="setPresence(this)"><i class="ti ti-check"></i> Présent</button><button type="button" class="pres-btn pres-no" onclick="setPresence(this)"><i class="ti ti-x"></i> Absent</button></div>
               </div>
             </div>
-            <div class="event">
+            <div class="event event--event">
               <div class="event__date"><small>Dim</small><b>06</b></div>
               <div class="event__info">
                 <div class="event__title">Tournoi interne du club</div>
@@ -610,7 +625,7 @@ body.logged{background:var(--surface);overflow:auto;display:block;align-items:in
           <p class="dash-intro">Confirmez votre participation aux sorties pour faciliter l'organisation du covoiturage.</p>
           <p class="sec-title">Prochaines sorties</p>
           <div class="event-list">
-            <div class="event">
+            <div class="event event--sortie">
               <div class="event__date"><small>Dim</small><b>22</b></div>
               <div class="event__info">
                 <div class="event__title">Boucle du Lac de Saint-Ferréol</div>
@@ -621,7 +636,7 @@ body.logged{background:var(--surface);overflow:auto;display:block;align-items:in
                 <div class="presence"><button type="button" class="pres-btn pres-yes" onclick="setPresence(this)"><i class="ti ti-check"></i> Présent</button><button type="button" class="pres-btn pres-no" onclick="setPresence(this)"><i class="ti ti-x"></i> Absent</button></div>
               </div>
             </div>
-            <div class="event">
+            <div class="event event--sortie">
               <div class="event__date"><small>Dim</small><b>05</b></div>
               <div class="event__info">
                 <div class="event__title">Montagne Noire — Crête des Cammazes</div>
