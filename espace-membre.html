@@ -15,13 +15,7 @@ body{font-family:'Poppins',sans-serif;margin:0;padding:0;background:#fff;color:#
 body.logged #login-section{display:none}
 #dashboard{display:none!important}
 body.logged #dashboard{display:flex!important}
-.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;background:#020d18}
-.hero__overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(2,13,24,.92) 0%,rgba(6,78,137,.3) 100%);pointer-events:none}
-.hero__content{position:relative;z-index:2;flex:1;display:flex;flex-direction:column;justify-content:center;padding:140px 56px 80px;max-width:1200px;margin:0 auto;width:100%}
-.hero__eyebrow{font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--brun-clair,#b8936a);display:flex;align-items:center;gap:10px;margin-bottom:16px}
-.hero__eyebrow::before{content:"";width:28px;height:2px;background:var(--brun-clair,#b8936a);border-radius:2px}
-.hero__titre{font-size:clamp(52px,8vw,110px);font-weight:900;color:#fff;line-height:.88;text-transform:uppercase;letter-spacing:-2px;margin-bottom:44px}
-.hero__titre em{color:var(--bleu-clair,#2ea3f2);font-style:normal;display:block}
+/* hero css => voir bloc principal ci-dessous */
 
 /* ── LOGIN CARD ── */
 .em-login-card{background:#fff;border-radius:20px;padding:36px 40px;max-width:420px;width:100%;box-shadow:0 30px 80px rgba(2,13,24,.55)}
@@ -178,15 +172,20 @@ body{font-family:var(--font);background:var(--blanc);color:#1a1a2e;line-height:1
 }
 
 /* ── HERO ── */
-.hero{position:relative;min-height:100vh;width:100%;display:flex;flex-direction:column;overflow:hidden;background:#020d18}
-.hero__overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(2,13,24,.92) 35%,rgba(6,78,137,.25) 100%)}
-.hero__content{position:relative;z-index:2;flex:1;display:flex;flex-direction:column;justify-content:center;max-width:1100px;width:100%;margin:0 auto;padding:80px 56px 0}
-.hero__eyebrow{font-size:11px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--brun-clair);display:flex;align-items:center;gap:10px;margin-bottom:16px}
-.hero__eyebrow::before{content:"";width:28px;height:2px;background:var(--brun-clair);border-radius:2px}
-.hero__titre{font-size:clamp(72px,10vw,136px);font-weight:900;color:#fff;line-height:.88;text-transform:uppercase;letter-spacing:-2px;margin-bottom:8px}
+.hero{position:relative;min-height:100vh;width:100%;display:grid;grid-template-columns:1fr 1fr;overflow:hidden;background:linear-gradient(135deg,#020d18 0%,#0a2a50 100%)}
+.hero__overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(2,13,24,.65) 0%,rgba(6,78,137,.12) 100%);pointer-events:none}
+.hero__left{position:relative;z-index:2;display:flex;flex-direction:column;justify-content:center;padding:100px 60px 80px}
+.hero__right{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;padding:80px 52px;background:rgba(0,0,0,.2);backdrop-filter:blur(8px);border-left:1px solid rgba(255,255,255,.07)}
+.hero__eyebrow{font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--brun-clair);display:flex;align-items:center;gap:10px;margin-bottom:24px}
+.hero__eyebrow::before{content:"";width:24px;height:2px;background:var(--brun-clair);border-radius:2px}
+.hero__titre{font-size:clamp(36px,4vw,58px);font-weight:900;color:#fff;line-height:1.05;text-transform:uppercase;letter-spacing:-1.5px;margin-bottom:14px}
 .hero__titre em{color:var(--bleu-clair);font-style:normal;display:block}
-.hero__devise{font-size:16px;font-weight:500;color:rgba(255,255,255,.45);letter-spacing:1px;text-transform:uppercase;margin-bottom:44px;font-style:normal}
+.hero__devise{font-size:13px;font-weight:500;color:rgba(255,255,255,.45);letter-spacing:2px;text-transform:uppercase;margin-bottom:40px}
 .hero__ctas{display:flex;gap:12px;flex-wrap:wrap}
+.hero__features{display:flex;flex-direction:column;gap:14px;margin-top:36px}
+.hero__feature{display:flex;align-items:center;gap:14px;font-size:14px;color:rgba(255,255,255,.65)}
+.hero__feature i{font-size:20px;color:var(--bleu-clair);flex-shrink:0}
+@media(max-width:900px){.hero{grid-template-columns:1fr}.hero__left{display:none}.hero__right{padding:80px 24px;background:transparent;backdrop-filter:none;border-left:none}}
 
 /* ── BANDE SPORTS NAVIGATION ── */
 .bande-sports{position:relative;z-index:2;background:rgba(6,78,137,.88);backdrop-filter:blur(14px);border-top:1px solid rgba(255,255,255,.1)}
@@ -371,22 +370,23 @@ body.logged .nav,body.logged .m2{display:none!important}
 
 /* ── SIDEBAR ── */
 .dash-sidebar{width:260px;flex-shrink:0;background:var(--bleu);min-height:100vh;display:flex;flex-direction:column;position:sticky;top:0;height:100vh;overflow-y:auto}
-.dash-sidebar__brand{padding:28px 24px 24px}
-.dash-sidebar__brand img{width:100px;height:auto;object-fit:contain;display:block;filter:brightness(0) invert(1)}
+.dash-sidebar__brand{padding:24px 20px 20px;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:8px}
+.dash-sidebar__brand img{width:110px;height:auto;object-fit:contain;display:block}
 .dash-sidebar__member{padding:16px 20px;margin:0 12px 8px;background:rgba(255,255,255,.08);border-radius:14px;display:flex;align-items:center;gap:12px}
 .dash-avatar{width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,#60c3ff,#2ea3f2);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:14px;color:#fff;flex-shrink:0;letter-spacing:.5px}
 .dash-sidebar__hi{font-size:10px;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:1px}
 .dash-sidebar__name{font-size:13px;font-weight:700;color:#fff;margin-top:1px}
 
 .dash-nav{padding:8px 12px;flex:1;display:flex;flex-direction:column;gap:2px}
-.dash-nav__item{display:flex;align-items:center;gap:11px;padding:11px 14px;border-radius:12px;font-size:13.5px;font-weight:600;color:rgba(255,255,255,.6);cursor:pointer;border:none;background:transparent;font-family:inherit;width:100%;text-align:left;transition:.2s;letter-spacing:.1px}
-.dash-nav__item i{font-size:19px;flex-shrink:0;transition:.2s}
-.dash-nav__item:hover{background:rgba(255,255,255,.1);color:#fff}
-.dash-nav__item.active{background:rgba(255,255,255,.15);color:#fff;font-weight:700}
-.dash-nav__item.active i{color:#60c3ff}
+.dash-nav__item{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:12px;font-size:13px;font-weight:600;color:rgba(255,255,255,.6);cursor:pointer;border:none;background:transparent;font-family:inherit;width:100%;text-align:left;transition:.2s;letter-spacing:.1px}
+.dash-nav__item i{font-size:18px;flex-shrink:0;width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:10px;background:rgba(255,255,255,.07);transition:.2s}
+.dash-nav__item:hover{background:rgba(255,255,255,.09);color:#fff}
+.dash-nav__item:hover i{background:rgba(255,255,255,.13);color:#fff}
+.dash-nav__item.active{background:rgba(255,255,255,.13);color:#fff;font-weight:700}
+.dash-nav__item.active i{background:rgba(46,163,242,.25);color:#60c3ff}
 .dash-nav__label{flex:1}
 
-.dash-sidebar__footer{padding:12px;border-top:1px solid rgba(255,255,255,.1)}
+.dash-sidebar__footer{padding:12px;border-top:1px solid rgba(255,255,255,.08)}
 .dash-logout{display:flex;align-items:center;gap:11px;padding:11px 14px;border-radius:12px;font-size:13px;font-weight:600;color:rgba(255,255,255,.45);cursor:pointer;border:none;background:transparent;font-family:inherit;width:100%;text-align:left;transition:.2s}
 .dash-logout:hover{background:rgba(239,68,68,.25);color:#fca5a5}
 .dash-logout i{font-size:19px}
@@ -614,9 +614,20 @@ body.logged .nav,body.logged .m2{display:none!important}
 <section id="login-section">
   <div class="hero" style="background:linear-gradient(135deg,#020d18 0%,#064e89 60%,#0a2040 100%);">
     <div class="hero__overlay"></div>
-    <div class="hero__content">
+    <!-- Gauche : identité -->
+    <div class="hero__left">
       <div class="hero__eyebrow">US Toulouse</div>
       <h1 class="hero__titre">Espace<em>Membre</em></h1>
+      <p class="hero__devise">Votre club, votre espace</p>
+      <div class="hero__features">
+        <div class="hero__feature"><i class="ti ti-id-badge-2"></i> Gérez vos adhésions &amp; licences</div>
+        <div class="hero__feature"><i class="ti ti-calendar-event"></i> Suivez votre planning sportif</div>
+        <div class="hero__feature"><i class="ti ti-checkbox"></i> Confirmez votre présence aux événements</div>
+        <div class="hero__feature"><i class="ti ti-download"></i> Téléchargez vos licences &amp; attestations</div>
+      </div>
+    </div>
+    <!-- Droite : formulaire -->
+    <div class="hero__right">
       <div class="em-login-card">
         <div class="em-login-title">Connexion</div>
         <p class="em-login-sub">Accédez à votre espace personnel : adhésions, planning et présences.</p>
