@@ -210,6 +210,19 @@ a{color:inherit}
 .side-news button:hover{background:var(--brun-clair)}
 
 /* similar */
+.art-nl{background:var(--brun);padding:80px 0}
+.art-nl__inner{max-width:90%;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.art-nl__eyebrow{font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:14px}
+.art-nl__title{font-size:clamp(28px,3.5vw,44px);font-weight:900;color:#fff;text-transform:uppercase;letter-spacing:-1px;line-height:1.05;margin-bottom:18px}
+.art-nl__title em{color:rgba(255,255,255,.7);font-style:normal;display:block}
+.art-nl__desc{font-size:15px;color:rgba(255,255,255,.7);line-height:1.7;max-width:420px}
+.art-nl__form{display:flex;flex-direction:column;gap:12px}
+.art-nl__form input{padding:15px 20px;border-radius:100px;border:none;background:rgba(255,255,255,.15);color:#fff;font-size:15px;font-family:var(--font);outline:none;backdrop-filter:blur(4px)}
+.art-nl__form input::placeholder{color:rgba(255,255,255,.5)}
+.art-nl__form input:focus{background:rgba(255,255,255,.22);box-shadow:0 0 0 3px rgba(255,255,255,.2)}
+.art-nl__btn{padding:16px;border:none;border-radius:100px;background:#fff;color:var(--brun);font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:pointer;font-family:var(--font);transition:.2s}
+.art-nl__btn:hover{background:rgba(255,255,255,.88)}
+.art-nl__legal{font-size:11px;color:rgba(255,255,255,.45);margin-top:14px;line-height:1.6}
 .art-similar{background:#020d18;padding:72px 0}
 .art-similar__head{max-width:90%;margin:0 auto 38px;display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap}
 .art-similar__k{font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--brun-clair);margin-bottom:10px}
@@ -240,6 +253,7 @@ a{color:inherit}
 }
 @media(max-width:560px){
   .art-similar__grid{grid-template-columns:1fr}
+  .art-nl__inner{grid-template-columns:1fr;gap:32px}
   .footer__grid{grid-template-columns:1fr}
   .art-author{flex-direction:column}
 }
@@ -465,27 +479,21 @@ a{color:inherit}
     </aside>
 </main>
 
-<section class="art-similar">
-  <div class="art-similar__head">
-    <div>
-      <div class="art-similar__k">À lire aussi</div>
-      <h2 class="art-similar__t">Articles similaires</h2>
+<section class="art-nl">
+  <div class="art-nl__inner">
+    <div class="art-nl__left">
+      <div class="art-nl__eyebrow">US Toulouse</div>
+      <h2 class="art-nl__title">Ne manquez<br><em>aucune actualité</em></h2>
+      <p class="art-nl__desc">Recevez en avant-première les actualités du club, les résultats et les événements à venir directement dans votre boîte mail.</p>
     </div>
-    <a href="/actualites" class="btn btn--outline">Voir toutes les actualités <i class="ti ti-arrow-right"></i></a>
-  </div>
-  <div class="art-similar__grid">
-      <a class="sim-card" href="/article">
-        <div class="sim-card__media"><img src="https://picsum.photos/seed/sim1/640/360" alt=""></div>
-        <div class="sim-card__body"><span class="sim-card__badge">Football</span><div class="sim-card__title">Victoire en Coupe Occitanie face à Blagnac SC</div></div>
-      </a>
-      <a class="sim-card" href="/article">
-        <div class="sim-card__media"><img src="https://picsum.photos/seed/sim2/640/360" alt=""></div>
-        <div class="sim-card__body"><span class="sim-card__badge">Vie du club</span><div class="sim-card__title">L'US Toulouse fête ses 6 ans d'existence</div></div>
-      </a>
-      <a class="sim-card" href="/article">
-        <div class="sim-card__media"><img src="https://picsum.photos/seed/sim3/640/360" alt=""></div>
-        <div class="sim-card__body"><span class="sim-card__badge">Football</span><div class="sim-card__title">Stage de perfectionnement pour les jeunes pousses</div></div>
-      </a>
+    <div class="art-nl__right">
+      <form class="art-nl__form" onsubmit="return false">
+        <input type="text" placeholder="Votre prénom">
+        <input type="email" placeholder="Votre adresse email">
+        <button type="submit" class="art-nl__btn">S'abonner à la newsletter</button>
+      </form>
+      <p class="art-nl__legal">En vous abonnant, vous acceptez notre politique de confidentialité. Désabonnement possible à tout moment.</p>
+    </div>
   </div>
 </section>
 

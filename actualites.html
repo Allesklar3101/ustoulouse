@@ -111,10 +111,10 @@ a{color:inherit}
 .hero__devise{font-size:16px;font-weight:500;color:rgba(255,255,255,.5);letter-spacing:1px;text-transform:uppercase}
 
 /* layout */
-.actu-layout{display:grid;grid-template-columns:240px 1fr;gap:40px;padding:56px 0 80px;align-items:start}
+.actu-layout{display:grid;grid-template-columns:260px 1fr;gap:40px;padding:56px 0 80px;align-items:start}
 
 /* sidebar */
-.actu-side{background:#fff;border-radius:var(--radius-lg);padding:28px 26px;box-shadow:0 6px 30px rgba(2,13,24,.07);position:sticky;top:90px}
+.actu-side{background:#fff;border-radius:var(--radius-lg);padding:28px 22px;box-shadow:0 6px 30px rgba(2,13,24,.07);position:sticky;top:90px;min-width:0;width:100%;box-sizing:border-box}
 .actu-side__title{font-size:13px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--bleu);margin-bottom:6px;display:flex;align-items:center;gap:10px}
 .actu-side__title i{color:var(--brun)}
 .actu-side__sub{font-size:12px;color:var(--gris-muted);margin-bottom:22px;padding-bottom:18px;border-bottom:2px solid var(--gris-bg)}
@@ -137,14 +137,14 @@ a{color:inherit}
 .actu-main__head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:24px}
 .actu-main__lead{font-size:13px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gris-muted)}
 .actu-count{font-size:14px;font-weight:600;color:var(--gris-muted)}
-.actu-count b{color:var(--brun);font-weight:800;font-size:18px}
+.actu-count b{color:var(--bleu);font-weight:800;font-size:18px}
 .actu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
 .actu-card{background:#fff;border-radius:var(--radius-lg);overflow:hidden;box-shadow:0 6px 26px rgba(2,13,24,.06);transition:transform .25s,box-shadow .25s;display:flex;flex-direction:column}
 .actu-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.15)}
 .actu-card__media{position:relative;aspect-ratio:16/9;overflow:hidden}
 .actu-card__media img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease}
 .actu-card:hover .actu-card__media img{transform:scale(1.05)}
-.actu-card__badge{position:absolute;top:12px;left:12px;background:var(--brun);color:#fff;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:5px 11px;border-radius:100px}
+.actu-card__badge{position:absolute;top:12px;left:12px;background:var(--bleu);color:#fff;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:5px 11px;border-radius:100px}
 .actu-card__body{padding:22px 24px 24px;display:flex;flex-direction:column;flex:1}
 .actu-card__title{font-size:18px;font-weight:700;color:var(--bleu);line-height:1.3;margin-bottom:11px}
 .actu-card__exc{font-size:13.5px;color:var(--gris-muted);line-height:1.7;flex:1;margin-bottom:18px}
@@ -154,11 +154,11 @@ a{color:inherit}
 /* pagination */
 .pagination{display:flex;justify-content:center;align-items:center;gap:8px;margin-top:48px}
 .pagination a{min-width:42px;height:42px;padding:0 14px;display:flex;align-items:center;justify-content:center;border-radius:100px;background:#fff;border:1px solid #e5e7eb;font-size:14px;font-weight:600;color:#334155;text-decoration:none;transition:.2s}
-.pagination a:hover{border-color:var(--brun);color:var(--brun)}
-.pagination a.active{background:var(--brun);border-color:var(--brun);color:#fff}
+.pagination a:hover{border-color:var(--bleu);color:var(--bleu)}
+.pagination a.active{background:var(--bleu);border-color:var(--bleu);color:#fff}
 
 /* newsletter — earth/brown tone */
-.newsletter{position:relative;background:linear-gradient(135deg,#3b2010 0%,#5c3318 50%,#3b2010 100%);padding:80px 0;overflow:hidden}
+.newsletter{position:relative;background:var(--brun);padding:80px 0;overflow:hidden}
 .newsletter::before{content:"";position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none}
 .newsletter::after{content:"";position:absolute;top:-30%;right:-10%;width:60%;height:120%;background:radial-gradient(circle,rgba(139,102,75,.22),transparent 65%);pointer-events:none}
 .newsletter__inner{position:relative;z-index:1;display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:center}
@@ -214,6 +214,8 @@ a{color:inherit}
 .btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.25)}
 .btn--brun{background:var(--brun);color:#fff}
 .btn--brun:hover{background:#6d4e38;color:#fff}
+.btn--outline-bleu{background:transparent;color:var(--bleu);border:1.5px solid rgba(6,78,137,.3);font-size:12px;padding:8px 18px;border-radius:100px}
+.btn--outline-bleu:hover{background:var(--bleu);color:#fff;border-color:var(--bleu)}
 
 </style>
 </head>
@@ -343,7 +345,7 @@ a{color:inherit}
           <div class="actu-card__body">
             <h3 class="actu-card__title">Tournoi de rentrée : un succès retentissant</h3>
             <p class="actu-card__exc">Plus de 200 participants se sont retrouvés à La Ramée pour le grand tournoi de rentrée de l'US Toulouse.</p>
-            <a href="/article" class="btn btn--brun">Lire la suite <i class="ti ti-arrow-right"></i></a>
+            <a href="/article" class="btn btn--outline-bleu">Lire la suite →</a>
           </div>
         </article>
 
@@ -355,7 +357,7 @@ a{color:inherit}
           <div class="actu-card__body">
             <h3 class="actu-card__title">Randonnée au Col du Tourmalet</h3>
             <p class="actu-card__exc">Une sortie inoubliable dans les Pyrénées avec 18 km de marche et 1 240 m de dénivelé positif.</p>
-            <a href="/article" class="btn btn--brun">Lire la suite <i class="ti ti-arrow-right"></i></a>
+            <a href="/article" class="btn btn--outline-bleu">Lire la suite →</a>
           </div>
         </article>
 
@@ -367,7 +369,7 @@ a{color:inherit}
           <div class="actu-card__body">
             <h3 class="actu-card__title">Nouveau partenariat avec Intersport</h3>
             <p class="actu-card__exc">L'US Toulouse signe un partenariat majeur pour équiper l'ensemble de ses équipes seniors.</p>
-            <a href="/article" class="btn btn--brun">Lire la suite <i class="ti ti-arrow-right"></i></a>
+            <a href="/article" class="btn btn--outline-bleu">Lire la suite →</a>
           </div>
         </article>
 
@@ -379,7 +381,7 @@ a{color:inherit}
           <div class="actu-card__body">
             <h3 class="actu-card__title">Victoire en Coupe Occitanie</h3>
             <p class="actu-card__exc">Les seniors s'imposent 3-1 face à Blagnac SC et filent en demi-finale de la Coupe Occitanie.</p>
-            <a href="/article" class="btn btn--brun">Lire la suite <i class="ti ti-arrow-right"></i></a>
+            <a href="/article" class="btn btn--outline-bleu">Lire la suite →</a>
           </div>
         </article>
 
@@ -391,7 +393,7 @@ a{color:inherit}
           <div class="actu-card__body">
             <h3 class="actu-card__title">L'US Toulouse fête ses 6 ans</h3>
             <p class="actu-card__exc">Retour sur six années d'engagement sportif et associatif au service des Toulousains.</p>
-            <a href="/article" class="btn btn--brun">Lire la suite <i class="ti ti-arrow-right"></i></a>
+            <a href="/article" class="btn btn--outline-bleu">Lire la suite →</a>
           </div>
         </article>
 
@@ -403,7 +405,7 @@ a{color:inherit}
           <div class="actu-card__body">
             <h3 class="actu-card__title">Week-end rando en Ariège</h3>
             <p class="actu-card__exc">Deux jours de marche, de bivouac et de convivialité au cœur des montagnes ariégeoises.</p>
-            <a href="/article" class="btn btn--brun">Lire la suite <i class="ti ti-arrow-right"></i></a>
+            <a href="/article" class="btn btn--outline-bleu">Lire la suite →</a>
           </div>
         </article>
 
@@ -415,7 +417,7 @@ a{color:inherit}
           <div class="actu-card__body">
             <h3 class="actu-card__title">La Mairie de Toulouse soutient le club</h3>
             <p class="actu-card__exc">Une subvention renouvelée permet de financer les nouvelles infrastructures du club.</p>
-            <a href="/article" class="btn btn--brun">Lire la suite <i class="ti ti-arrow-right"></i></a>
+            <a href="/article" class="btn btn--outline-bleu">Lire la suite →</a>
           </div>
         </article>
 
@@ -427,7 +429,7 @@ a{color:inherit}
           <div class="actu-card__body">
             <h3 class="actu-card__title">Stage de perfectionnement jeunes</h3>
             <p class="actu-card__exc">Une semaine intensive pour nos U13 et U15 encadrés par des éducateurs diplômés.</p>
-            <a href="/article" class="btn btn--brun">Lire la suite <i class="ti ti-arrow-right"></i></a>
+            <a href="/article" class="btn btn--outline-bleu">Lire la suite →</a>
           </div>
         </article>
 
@@ -439,7 +441,7 @@ a{color:inherit}
           <div class="actu-card__body">
             <h3 class="actu-card__title">Assemblée générale annuelle</h3>
             <p class="actu-card__exc">Bilan moral et financier positif lors de l'AG qui a réuni l'ensemble des adhérents.</p>
-            <a href="/article" class="btn btn--brun">Lire la suite <i class="ti ti-arrow-right"></i></a>
+            <a href="/article" class="btn btn--outline-bleu">Lire la suite →</a>
           </div>
         </article>
         
