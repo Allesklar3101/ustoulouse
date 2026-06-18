@@ -134,7 +134,7 @@ a{color:inherit}
 .art-layout{display:grid;grid-template-columns:1fr 320px;gap:48px;max-width:90%;margin:0 auto;padding:60px 0}
 
 /* body */
-.art-body{max-width:720px}
+.art-body{width:100%}
 .art-body .lead{font-size:19px;line-height:1.8;color:#1a1a2e;font-weight:500;margin-bottom:28px}
 .art-body p{font-size:16px;line-height:1.8;color:#334155;margin-bottom:22px}
 .art-body h2{font-size:26px;font-weight:800;color:var(--bleu);letter-spacing:-.5px;margin:42px 0 18px;line-height:1.25}
@@ -243,6 +243,22 @@ a{color:inherit}
   .footer__grid{grid-template-columns:1fr}
   .art-author{flex-direction:column}
 }
+.footer{background:#020d18;padding:72px 0 32px}
+.footer__grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:32px}
+.footer__logo{width:80px;height:80px;object-fit:contain;margin-bottom:16px;display:block}
+.footer__desc{font-size:14px;color:rgba(255,255,255,.65);line-height:1.8;margin-bottom:24px}
+.footer__socials{display:flex;gap:10px;flex-wrap:wrap}
+.footer__social{width:40px;height:40px;border-radius:8px;background:rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;color:#fff;text-decoration:none;transition:background .2s}
+.footer__social:hover{background:rgba(139,102,75,.25);color:var(--brun-clair)}
+.footer__col h4{font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:18px}
+.footer__liens{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer__liens a{font-size:14px;color:rgba(255,255,255,.65);text-decoration:none;transition:color .2s;font-weight:500}
+.footer__liens a:hover{color:#fff}
+.footer__bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.footer__copy{font-size:12px;color:rgba(255,255,255,.4)}
+.footer__legal{display:flex;gap:20px}
+.footer__legal a{font-size:12px;color:rgba(255,255,255,.4);text-decoration:none}
+.footer__legal a:hover{color:rgba(255,255,255,.7)}
 
 </style>
 </head>
@@ -386,27 +402,6 @@ a{color:inherit}
       </div>
 
 
-      <section class="art-comments">
-        <h3 class="art-comments__h">0 commentaire</h3>
-        <p class="art-comments__sub">Soyez le premier à réagir à cet article.</p>
-        <form class="comment-form" onsubmit="return fakeComment(this)">
-          <div class="comment-form__row">
-            <div>
-              <label for="c-name">Nom</label>
-              <input id="c-name" type="text" placeholder="Votre nom" required>
-            </div>
-            <div>
-              <label for="c-email">Email</label>
-              <input id="c-email" type="email" placeholder="Votre adresse email" required>
-            </div>
-          </div>
-          <div>
-            <label for="c-msg">Commentaire</label>
-            <textarea id="c-msg" placeholder="Votre message..." required></textarea>
-          </div>
-          <button type="submit" class="btn btn--brun">Publier le commentaire</button>
-        </form>
-      </section>
     </article>
 
     <aside class="art-sidebar">
