@@ -111,10 +111,10 @@ a{color:inherit}
 .hero__devise{font-size:16px;font-weight:500;color:rgba(255,255,255,.5);letter-spacing:1px;text-transform:uppercase}
 
 /* layout */
-.actu-layout{display:grid;grid-template-columns:260px 1fr;gap:40px;padding:56px 0 80px;align-items:start}
+.actu-layout{display:grid;grid-template-columns:280px 1fr;gap:30px;padding:56px 0 80px;align-items:start}
 
 /* sidebar */
-.actu-side{background:#fff;border-radius:var(--radius-lg);padding:28px 22px;box-shadow:0 6px 30px rgba(2,13,24,.07);position:sticky;top:90px;min-width:0;width:100%;box-sizing:border-box}
+.actu-side{background:#fff;border-radius:var(--radius-lg);padding:28px 10px;box-shadow:0 6px 30px rgba(2,13,24,.07);position:sticky;top:90px;min-width:0;width:100%;box-sizing:border-box}
 .actu-side__title{font-size:13px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--bleu);margin-bottom:6px;display:flex;align-items:center;gap:10px}
 .actu-side__title i{color:var(--brun)}
 .actu-side__sub{font-size:12px;color:var(--gris-muted);margin-bottom:22px;padding-bottom:18px;border-bottom:2px solid var(--gris-bg)}
@@ -126,7 +126,7 @@ a{color:inherit}
 .filter-body{padding:4px 0 14px}
 .filter-list{display:flex;flex-direction:column;gap:9px}
 .filter-list--grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 6px}
-.filter-item{display:flex;align-items:center;gap:9px;font-size:13px;color:#334155;cursor:pointer;padding:5px 9px;border-radius:8px;border-left:3px solid transparent;transition:background .15s,border-color .15s,color .15s}
+.filter-item{display:flex;align-items:center;gap:9px;font-size:13px;color:#334155;cursor:pointer;padding:5px 3px;border-radius:8px;border-left:3px solid transparent;transition:background .15s,border-color .15s,color .15s}
 .filter-item input{width:16px;height:16px;accent-color:var(--bleu-clair);cursor:pointer;flex-shrink:0}
 .filter-item:hover{color:var(--bleu);background:var(--gris-bg)}
 .filter-item:has(input:checked){background:rgba(46,163,242,.08);border-left-color:var(--brun);color:var(--bleu);font-weight:600}
@@ -166,12 +166,12 @@ a{color:inherit}
 .newsletter__t{font-size:clamp(30px,4vw,46px);font-weight:900;text-transform:uppercase;color:#fff;letter-spacing:-1px;line-height:1.05}
 .newsletter__t em{color:var(--brun-clair);font-style:normal}
 .newsletter__d{font-size:15px;color:rgba(255,255,255,.6);margin-top:18px;max-width:420px;line-height:1.7}
-.newsletter__form{display:flex;flex-direction:column;gap:14px;background:rgba(255,255,255,.04);border:1px solid rgba(184,147,106,.18);border-radius:var(--radius-lg);padding:28px}
-.newsletter__form input{padding:15px 18px;border-radius:100px;border:none;background:#fff;color:#1a1a2e;font-size:15px;font-family:var(--font);outline:none}
-.newsletter__form input::placeholder{color:#9aa3ad}
-.newsletter__form input:focus{box-shadow:0 0 0 3px rgba(184,147,106,.4)}
-.newsletter__btn{padding:15px;background:var(--brun);color:#fff;border:none;border-radius:100px;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;font-family:var(--font);transition:.2s}
-.newsletter__btn:hover{background:#6d4e38}
+.newsletter__form{display:flex;flex-direction:column;gap:12px}
+.newsletter__form input{padding:15px 20px;border-radius:100px;border:none;background:rgba(255,255,255,.15);color:#fff;font-size:15px;font-family:var(--font);outline:none;backdrop-filter:blur(4px)}
+.newsletter__form input::placeholder{color:rgba(255,255,255,.5)}
+.newsletter__form input:focus{background:rgba(255,255,255,.22);box-shadow:0 0 0 3px rgba(255,255,255,.2)}
+.newsletter__btn{padding:16px;background:#fff;color:var(--brun);border:none;border-radius:100px;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:pointer;font-family:var(--font);transition:.2s}
+.newsletter__btn:hover{background:rgba(255,255,255,.88)}
 
 @media(max-width:1100px){.actu-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:1024px){
@@ -214,8 +214,8 @@ a{color:inherit}
 .btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.25)}
 .btn--brun{background:var(--brun);color:#fff}
 .btn--brun:hover{background:#6d4e38;color:#fff}
-.btn--outline-bleu{background:transparent;color:var(--bleu);border:1.5px solid rgba(6,78,137,.3);font-size:12px;padding:8px 18px;border-radius:100px}
-.btn--outline-bleu:hover{background:var(--bleu);color:#fff;border-color:var(--bleu)}
+.btn--outline-bleu{background:transparent;color:var(--bleu);border:none;font-size:13px;font-weight:600;font-family:var(--font);padding:0;text-decoration:underline;text-underline-offset:3px;border-radius:0}
+.btn--outline-bleu:hover{color:var(--bleu-clair);text-decoration:underline}
 
 </style>
 </head>
@@ -464,14 +464,15 @@ a{color:inherit}
   <div class="actu-wrap">
     <div class="newsletter__inner">
       <div>
-        <div class="newsletter__k">US Toulouse / Newsletter</div>
-        <h2 class="newsletter__t">Restez <em>informé</em></h2>
-        <p class="newsletter__d">Recevez les dernières actualités du club — matchs, randonnées, événements et partenariats — directement dans votre boîte mail.</p>
+        <div class="newsletter__k">US Toulouse</div>
+        <h2 class="newsletter__t">Ne manquez<br><em>aucune actualité</em></h2>
+        <p class="newsletter__d">Recevez en avant-première les actualités du club, les résultats et les événements à venir directement dans votre boîte mail.</p>
       </div>
       <form class="newsletter__form" onsubmit="return fakeSub(this)">
-        <input type="text" placeholder="Votre nom" required>
+        <input type="text" placeholder="Votre prénom" required>
         <input type="email" placeholder="Votre adresse email" required>
-        <button type="submit" class="newsletter__btn">S'abonner</button>
+        <button type="submit" class="newsletter__btn">S'abonner à la newsletter</button>
+        <p style="font-size:11px;color:rgba(255,255,255,.45);margin:0;line-height:1.6">En vous abonnant, vous acceptez notre politique de confidentialité. Désabonnement possible à tout moment.</p>
       </form>
     </div>
   </div>
