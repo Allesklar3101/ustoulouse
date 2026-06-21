@@ -1,0 +1,64 @@
+/* ── UST Classements — affichage front ── */
+.ust-clst{
+	--bleu:#064e89;--bleu-clair:#2ea3f2;--brun:#8b664b;
+	font-family:'Poppins',system-ui,sans-serif;
+	background:var(--bleu);
+	border-radius:14px;
+	overflow:hidden;
+	box-shadow:0 8px 32px rgba(2,13,24,.18);
+	color:#fff;
+	margin:24px 0;
+}
+.ust-clst__head{
+	padding:26px 28px 18px;
+	border-bottom:1px solid rgba(255,255,255,.1);
+}
+.ust-clst__eyebrow{
+	font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;
+	color:var(--bleu-clair);display:block;margin-bottom:6px;
+}
+.ust-clst__title{
+	font-size:clamp(20px,3vw,28px);font-weight:900;text-transform:uppercase;
+	letter-spacing:-.5px;color:#fff;margin:0;line-height:1.1;
+}
+.ust-clst__scroll{overflow-x:auto}
+.ust-clst__table{
+	width:100%;border-collapse:collapse;min-width:560px;
+}
+.ust-clst__table th{
+	font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;
+	color:rgba(255,255,255,.5);padding:14px 8px;text-align:center;
+	border-bottom:1px solid rgba(255,255,255,.1);
+}
+.ust-clst__table th.ust-clst__team{text-align:left;padding-left:20px}
+.ust-clst__table td{
+	font-size:13px;font-weight:500;color:rgba(255,255,255,.85);
+	padding:13px 8px;text-align:center;
+	border-bottom:1px solid rgba(255,255,255,.06);
+}
+.ust-clst__pos{font-weight:700;color:#fff;width:42px}
+.ust-clst__team{text-align:left;padding-left:20px;font-weight:600;color:#fff}
+.ust-clst__pts{font-weight:800;color:var(--bleu-clair);font-size:15px}
+.ust-clst__diff{color:rgba(255,255,255,.6)}
+.ust-clst__row--ust td{
+	background:rgba(46,163,242,.18);
+	color:#fff;
+}
+.ust-clst__row--ust .ust-clst__team{
+	position:relative;
+	font-weight:800;
+}
+.ust-clst__row--ust .ust-clst__team::before{
+	content:"";position:absolute;left:0;top:50%;transform:translateY(-50%);
+	width:4px;height:70%;background:var(--bleu-clair);border-radius:2px;
+}
+.ust-clst__row--ust .ust-clst__pts{color:#fff}
+.ust-clst__table tbody tr:hover td{background:rgba(255,255,255,.05)}
+.ust-clst__row--ust:hover td{background:rgba(46,163,242,.24)}
+.ust-clst__empty{
+	padding:32px;color:rgba(255,255,255,.45);font-style:italic;
+}
+@media(max-width:600px){
+	.ust-clst__head{padding:20px 18px 14px}
+	.ust-clst__table td,.ust-clst__table th{padding:11px 6px}
+}

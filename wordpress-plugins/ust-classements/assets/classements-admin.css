@@ -1,0 +1,11 @@
+/* ── UST Classements — admin ── */
+.ust-clst-grid{display:flex;gap:32px;flex-wrap:wrap;margin-top:20px}
+.ust-clst-col{flex:1;min-width:320px}
+.ust-clst-col--narrow{max-width:340px;flex:0 0 340px}
+.ust-clst-col--narrow form{background:#fff;border:1px solid #dcdcde;border-radius:6px;padding:18px 20px}
+.ust-clst-rows input[type=number],.ust-clst-rows input[type=text]{width:100%}
+.ust-clst-rows .small-text{width:60px}
+.ust-clst-rows td{vertical-align:middle}
+.ust-clst-remove{color:#b32d2e;font-size:20px;text-decoration:none;cursor:pointer}
+.ust-clst-remove:hover{color:#d63638}
+.button-link-delete{color:#b32d2e}
