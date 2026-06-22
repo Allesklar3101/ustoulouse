@@ -1,0 +1,150 @@
+<main class="actu-wrap">
+<div class="actu-layout">
+<aside class="actu-side">
+<div class="actu-side__title"><i class="ti ti-adjustments-horizontal"></i> Filtres</div>
+<p class="actu-side__sub">Affinez votre recherche d'actualités</p>
+<div class="filter-group">
+<div class="filter-group__h" onclick="toggleFilter('f-type-body')">Type d'actualité <i class="ti ti-chevron-down acc-chev"></i></div>
+<div class="filter-body" id="f-type-body">
+<div class="filter-list">
+<label class="filter-item"><input class="f-type" type="checkbox" value="event"/>Événement</label>
+</div>
+</div>
+</div>
+<div class="filter-group">
+<div class="filter-group__h" onclick="toggleFilter('f-theme-body')">Thématique <i class="ti ti-chevron-down acc-chev"></i></div>
+<div class="filter-body" id="f-theme-body">
+<div class="filter-list filter-list--grid">
+<label class="filter-item"><input class="f-theme" type="checkbox" value="football"/>Football</label>
+<label class="filter-item"><input class="f-theme" type="checkbox" value="randonnee"/>Randonnée</label>
+<label class="filter-item"><input class="f-theme" type="checkbox" value="partenariat"/>Partenariat</label>
+<label class="filter-item"><input class="f-theme" type="checkbox" value="ust"/>US Toulouse</label>
+</div>
+</div>
+</div>
+<div class="filter-group">
+<div class="filter-group__h" onclick="toggleFilter('f-year-body')">Année <i class="ti ti-chevron-down acc-chev"></i></div>
+<div class="filter-body" id="f-year-body">
+<div class="filter-list filter-list--grid">
+<label class="filter-item"><input class="f-year" type="checkbox" value="2025"/>2025</label>
+<label class="filter-item"><input class="f-year" type="checkbox" value="2024"/>2024</label>
+<label class="filter-item"><input class="f-year" type="checkbox" value="2023"/>2023</label>
+<label class="filter-item"><input class="f-year" type="checkbox" value="2022"/>2022</label>
+<label class="filter-item"><input class="f-year" type="checkbox" value="2021"/>2021</label>
+<label class="filter-item"><input class="f-year" type="checkbox" value="2019"/>2019</label>
+</div>
+</div>
+</div>
+<button class="btn-reset" onclick="resetFilters()">Réinitialiser les filtres</button>
+</aside>
+<section class="actu-main">
+<div class="actu-main__head">
+<span class="actu-main__lead">Dernières actualités</span>
+<span class="actu-count"><b id="actu-count">9</b> actus trouvées</span>
+</div>
+<div class="actu-grid" id="actu-grid">
+<article class="actu-card" data-theme="football" data-type="event" data-year="2025">
+<div class="actu-card__media">
+<img alt="" loading="lazy" src="https://picsum.photos/seed/ust1/640/360"/>
+<span class="actu-card__badge">ÉVÉNEMENT</span>
+</div>
+<div class="actu-card__body">
+<h3 class="actu-card__title">Tournoi de rentrée : un succès retentissant</h3>
+<p class="actu-card__exc">Plus de 200 participants se sont retrouvés à La Ramée pour le grand tournoi de rentrée de l'US Toulouse.</p>
+<a class="btn btn--outline-bleu" href="/article">Lire la suite →</a>
+</div>
+</article>
+<article class="actu-card" data-theme="randonnee" data-type="" data-year="2025">
+<div class="actu-card__media">
+<img alt="" loading="lazy" src="https://picsum.photos/seed/ust2/640/360"/>
+</div>
+<div class="actu-card__body">
+<h3 class="actu-card__title">Randonnée au Col du Tourmalet</h3>
+<p class="actu-card__exc">Une sortie inoubliable dans les Pyrénées avec 18 km de marche et 1 240 m de dénivelé positif.</p>
+<a class="btn btn--outline-bleu" href="/article">Lire la suite →</a>
+</div>
+</article>
+<article class="actu-card" data-theme="partenariat" data-type="event" data-year="2024">
+<div class="actu-card__media">
+<img alt="" loading="lazy" src="https://picsum.photos/seed/ust3/640/360"/>
+<span class="actu-card__badge">ÉVÉNEMENT</span>
+</div>
+<div class="actu-card__body">
+<h3 class="actu-card__title">Nouveau partenariat avec Intersport</h3>
+<p class="actu-card__exc">L'US Toulouse signe un partenariat majeur pour équiper l'ensemble de ses équipes seniors.</p>
+<a class="btn btn--outline-bleu" href="/article">Lire la suite →</a>
+</div>
+</article>
+<article class="actu-card" data-theme="football" data-type="" data-year="2024">
+<div class="actu-card__media">
+<img alt="" loading="lazy" src="https://picsum.photos/seed/ust4/640/360"/>
+</div>
+<div class="actu-card__body">
+<h3 class="actu-card__title">Victoire en Coupe Occitanie</h3>
+<p class="actu-card__exc">Les seniors s'imposent 3-1 face à Blagnac SC et filent en demi-finale de la Coupe Occitanie.</p>
+<a class="btn btn--outline-bleu" href="/article">Lire la suite →</a>
+</div>
+</article>
+<article class="actu-card" data-theme="ust" data-type="" data-year="2023">
+<div class="actu-card__media">
+<img alt="" loading="lazy" src="https://picsum.photos/seed/ust5/640/360"/>
+</div>
+<div class="actu-card__body">
+<h3 class="actu-card__title">L'US Toulouse fête ses 6 ans</h3>
+<p class="actu-card__exc">Retour sur six années d'engagement sportif et associatif au service des Toulousains.</p>
+<a class="btn btn--outline-bleu" href="/article">Lire la suite →</a>
+</div>
+</article>
+<article class="actu-card" data-theme="randonnee" data-type="event" data-year="2023">
+<div class="actu-card__media">
+<img alt="" loading="lazy" src="https://picsum.photos/seed/ust6/640/360"/>
+<span class="actu-card__badge">ÉVÉNEMENT</span>
+</div>
+<div class="actu-card__body">
+<h3 class="actu-card__title">Week-end rando en Ariège</h3>
+<p class="actu-card__exc">Deux jours de marche, de bivouac et de convivialité au cœur des montagnes ariégeoises.</p>
+<a class="btn btn--outline-bleu" href="/article">Lire la suite →</a>
+</div>
+</article>
+<article class="actu-card" data-theme="partenariat" data-type="" data-year="2022">
+<div class="actu-card__media">
+<img alt="" loading="lazy" src="https://picsum.photos/seed/ust7/640/360"/>
+</div>
+<div class="actu-card__body">
+<h3 class="actu-card__title">La Mairie de Toulouse soutient le club</h3>
+<p class="actu-card__exc">Une subvention renouvelée permet de financer les nouvelles infrastructures du club.</p>
+<a class="btn btn--outline-bleu" href="/article">Lire la suite →</a>
+</div>
+</article>
+<article class="actu-card" data-theme="football" data-type="event" data-year="2021">
+<div class="actu-card__media">
+<img alt="" loading="lazy" src="https://picsum.photos/seed/ust8/640/360"/>
+<span class="actu-card__badge">ÉVÉNEMENT</span>
+</div>
+<div class="actu-card__body">
+<h3 class="actu-card__title">Stage de perfectionnement jeunes</h3>
+<p class="actu-card__exc">Une semaine intensive pour nos U13 et U15 encadrés par des éducateurs diplômés.</p>
+<a class="btn btn--outline-bleu" href="/article">Lire la suite →</a>
+</div>
+</article>
+<article class="actu-card" data-theme="ust" data-type="" data-year="2019">
+<div class="actu-card__media">
+<img alt="" loading="lazy" src="https://picsum.photos/seed/ust9/640/360"/>
+</div>
+<div class="actu-card__body">
+<h3 class="actu-card__title">Assemblée générale annuelle</h3>
+<p class="actu-card__exc">Bilan moral et financier positif lors de l'AG qui a réuni l'ensemble des adhérents.</p>
+<a class="btn btn--outline-bleu" href="/article">Lire la suite →</a>
+</div>
+</article>
+<p class="actu-empty" id="actu-empty" style="display:none">Aucune actualité ne correspond à votre recherche.</p>
+</div>
+<nav aria-label="Pagination" class="pagination">
+<a class="active" href="#">1</a>
+<a href="#">2</a>
+<a href="#">3</a>
+<a aria-label="Suivant" href="#"><i class="ti ti-arrow-right"></i></a>
+</nav>
+</section>
+</div>
+</main>

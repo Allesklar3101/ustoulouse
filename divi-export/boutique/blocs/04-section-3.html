@@ -1,0 +1,14 @@
+<div class="product-modal" id="productModal" onclick="if(event.target===this)closeProduct()">
+<div class="product-modal-inner">
+<button aria-label="Fermer" class="product-modal-close" onclick="closeProduct()">×</button>
+<div class="product-modal-left">
+<div class="pm-carousel">
+<div class="pm-carousel__main" id="pmMainPhoto"></div>
+<button aria-label="Précédent" class="pm-carousel__nav pm-carousel__nav--prev" onclick="photoNav(-1)">‹</button>
+<button aria-label="Suivant" class="pm-carousel__nav pm-carousel__nav--next" onclick="photoNav(1)">›</button>
+</div>
+<div class="pm-thumbs" id="pmThumbs"></div>
+</div>
+<div class="product-modal-body" id="productModalBody"></div>
+</div>
+</div>

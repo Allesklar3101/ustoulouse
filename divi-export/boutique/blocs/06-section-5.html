@@ -1,0 +1,16 @@
+<div class="shop-pop" id="cartRecap" onclick="if(event.target===this)closeCartRecap()">
+<div class="shop-pop__box recap-box">
+<div class="shop-pop__head">
+<div>
+<h3>Mon Panier</h3>
+<p class="recap-subtitle">Récap de commande</p>
+</div>
+<button aria-label="Fermer" class="shop-pop__close" onclick="closeCartRecap()">×</button>
+</div>
+<div class="shop-pop__body" id="recapItems"></div>
+<div class="shop-pop__foot">
+<div class="cart-total-row"><span>Total</span><span id="recapTotal">0,00 €</span></div>
+<button class="btn btn--brun" id="recapCheckoutBtn" onclick="openCheckout()">Passer à la caisse</button>
+</div>
+</div>
+</div>

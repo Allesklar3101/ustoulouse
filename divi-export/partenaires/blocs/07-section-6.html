@@ -1,0 +1,78 @@
+<div class="dp-overlay" id="dpOverlay">
+<div aria-labelledby="dpTitle" aria-modal="true" class="dp-modal" role="dialog">
+<div class="dp-modal__header">
+<p class="dp-modal__eyebrow">US Toulouse — Partenariat</p>
+<h2 class="dp-modal__title" id="dpTitle">Devenir<br/>partenaire</h2>
+<p style="font-size:13px;color:rgba(255,255,255,.6);line-height:1.6;margin-top:12px">Associez votre image à un club engagé et ancré dans le tissu local toulousain.</p>
+<div style="margin-top:32px">
+<div class="dp-avantage">
+<div class="dp-avantage__ico"><i class="ti ti-eye"></i></div>
+<div><p class="dp-avantage__titre">Visibilité maximale</p><p class="dp-avantage__desc">Maillots, site web, réseaux sociaux et événements.</p></div>
+</div>
+<div class="dp-avantage">
+<div class="dp-avantage__ico"><i class="ti ti-users"></i></div>
+<div><p class="dp-avantage__titre">Réseau local actif</p><p class="dp-avantage__desc">Accès à une communauté de +500 sportifs toulousains.</p></div>
+</div>
+<div class="dp-avantage">
+<div class="dp-avantage__ico"><i class="ti ti-heart"></i></div>
+<div><p class="dp-avantage__titre">Image engagée</p><p class="dp-avantage__desc">Soutenez le sport amateur et les valeurs du club.</p></div>
+</div>
+<div class="dp-avantage">
+<div class="dp-avantage__ico"><i class="ti ti-award"></i></div>
+<div><p class="dp-avantage__titre">3 formules</p><p class="dp-avantage__desc">Platinium, Gold, Silver — ou sur mesure selon vos besoins.</p></div>
+</div>
+</div>
+</div>
+<button aria-label="Fermer" class="dp-modal__close" onclick="closeDevenirPopup()">✕</button>
+<div class="dp-modal__body">
+<div class="dp-error" id="dpError"></div>
+<div class="dp-success" id="dpSuccess">
+<strong>Message envoyé !</strong><br/>Nous reviendrons vers vous très rapidement.
+      </div>
+<form id="dpForm" novalidate="" onsubmit="sendDevenirPartenaire(event)">
+<input autocomplete="off" class="dp-hp" id="dp-hp" name="website" tabindex="-1" type="text"/>
+<div class="dp-row-2">
+<div class="dp-field">
+<label for="dp-nom">Nom</label>
+<input id="dp-nom" placeholder="Dupont" required="" type="text"/>
+</div>
+<div class="dp-field">
+<label for="dp-prenom">Prénom</label>
+<input id="dp-prenom" placeholder="Jean" required="" type="text"/>
+</div>
+</div>
+<div class="dp-field">
+<label for="dp-societe">Société</label>
+<input id="dp-societe" placeholder="Ma Société SAS" required="" type="text"/>
+</div>
+<div class="dp-row-2">
+<div class="dp-field">
+<label for="dp-email">Email</label>
+<input id="dp-email" placeholder="jean@exemple.fr" required="" type="email"/>
+</div>
+<div class="dp-field">
+<label for="dp-tel">Téléphone</label>
+<input id="dp-tel" placeholder="06 12 34 56 78" type="tel"/>
+</div>
+</div>
+<div class="dp-field">
+<label for="dp-offre">Offre souhaitée</label>
+<select id="dp-offre">
+<option value="">— Je ne sais pas encore —</option>
+<option value="platinium">Platinium</option>
+<option value="gold">Gold</option>
+<option value="silver">Silver</option>
+<option value="autre">Autre / Sur mesure</option>
+</select>
+</div>
+<div class="dp-field">
+<label for="dp-msg">Message (optionnel)</label>
+<textarea id="dp-msg" placeholder="Décrivez votre projet de partenariat…"></textarea>
+</div>
+<button class="btn btn--bleu-fonce" style="width:100%;justify-content:center;border-radius:10px;padding:16px" type="submit">
+<i class="ti ti-send"></i> Envoyer ma demande
+        </button>
+</form>
+</div>
+</div>
+</div>

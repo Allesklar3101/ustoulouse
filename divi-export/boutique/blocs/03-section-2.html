@@ -1,0 +1,29 @@
+<section class="sec" id="catalogue" style="background:var(--gris-bg);padding:80px 0">
+<div class="wrap">
+<p class="eyebrow" style="font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--brun-clair);margin-bottom:14px">Notre sélection</p>
+<h2 class="h2">Nos articles</h2>
+<div class="shop-layout">
+<!-- SIDEBAR FILTRES -->
+<aside class="shop-sidebar">
+<div class="shop-search">
+<i class="ti ti-search"></i>
+<input autocomplete="off" id="searchInput" oninput="onSearchInput()" placeholder="Rechercher un article..." type="text"/>
+</div>
+<div class="filter-group" id="fg-cat">
+<p class="filter-group__title" onclick="toggleFilterGroup('fg-cat')">Catégories</p>
+<div class="filter-group__body"><div id="catFilters"></div></div>
+</div>
+<div class="filter-group" id="fg-brand">
+<p class="filter-group__title" onclick="toggleFilterGroup('fg-brand')">Marque</p>
+<div class="filter-group__body"><div id="brandFilters"></div></div>
+</div>
+<button class="filter-reset" onclick="clearFilters()">Réinitialiser les filtres</button>
+</aside>
+<!-- GRILLE PRODUITS -->
+<div>
+<p class="shop-result" id="resultCount">24 articles</p>
+<div class="product-grid" id="productGrid"></div>
+</div>
+</div>
+</div>
+</section>

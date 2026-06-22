@@ -1,0 +1,31 @@
+<section id="login-section">
+<div class="hero" style="background:linear-gradient(135deg,#020d18 0%,#064e89 60%,#0a2040 100%);">
+<div class="hero__overlay"></div>
+<!-- Gauche : identité -->
+<div class="hero__left">
+<div class="hero__eyebrow">US Toulouse</div>
+<h1 class="hero__titre">Espace<em>Membre</em></h1>
+<p class="hero__devise">Votre club, votre espace</p>
+<div class="hero__features">
+<div class="hero__feature"><i class="ti ti-id-badge-2"></i> Gérez vos adhésions &amp; licences</div>
+<div class="hero__feature"><i class="ti ti-calendar-event"></i> Suivez votre planning sportif</div>
+<div class="hero__feature"><i class="ti ti-checkbox"></i> Confirmez votre présence aux événements</div>
+<div class="hero__feature"><i class="ti ti-download"></i> Téléchargez vos licences &amp; attestations</div>
+</div>
+</div>
+<!-- Droite : formulaire -->
+<div class="hero__right">
+<div class="em-login-card">
+<div class="em-login-title">Connexion</div>
+<p class="em-login-sub">Accédez à votre espace personnel : adhésions, planning et présences.</p>
+<div class="error-msg" id="errorMsg"><i class="ti ti-alert-circle" style="font-size:14px;margin-right:6px;vertical-align:middle"></i>Identifiant ou mot de passe incorrect.</div>
+<div class="form-field"><label>Identifiant ou Email</label><input autocomplete="username" id="loginUser" placeholder="votre@email.com" type="text"/></div>
+<div class="form-field"><label>Mot de passe</label><input autocomplete="current-password" id="loginPass" placeholder="••••••••••" type="password"/></div>
+<div class="checkbox-row"><input id="remember" type="checkbox"/><label for="remember">Se souvenir de moi</label></div>
+<button class="btn-login" onclick="doLogin()"><i class="ti ti-login" style="font-size:15px;margin-right:8px;vertical-align:middle"></i>Connexion</button>
+<div class="login-links"><a href="/contact">Mot de passe oublié ?</a><a href="/contact">Pas encore membre ?</a></div>
+<p class="login-demo"><i class="ti ti-info-circle" style="vertical-align:middle;margin-right:4px"></i>Maquette — saisissez n'importe quels identifiants.</p>
+</div>
+</div>
+</div>
+</section>

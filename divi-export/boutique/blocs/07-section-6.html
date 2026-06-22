@@ -1,0 +1,87 @@
+<div class="shop-pop" id="checkoutModal" onclick="if(event.target===this)closeCheckout()">
+<div class="shop-pop__box checkout-box">
+<div class="shop-pop__head">
+<h3>Finaliser ma commande</h3>
+<button aria-label="Fermer" class="shop-pop__close" onclick="closeCheckout()">×</button>
+</div>
+<div class="shop-pop__body">
+<div class="os-mini" id="checkoutSummary"></div>
+<form class="checkout-form" onsubmit="handleStripeCheckout();return false">
+<h4 class="ck-section-title">Coordonnées</h4>
+<div class="form-row-2">
+<div><label>Prénom *</label><input id="ck-prenom" placeholder="Prénom" required="" type="text"/></div>
+<div><label>Nom *</label><input id="ck-nom" placeholder="Nom" required="" type="text"/></div>
+</div>
+<div class="form-row-2">
+<div><label>Email *</label><input id="ck-email" placeholder="vous@email.com" required="" type="email"/></div>
+<div><label>Téléphone</label><input id="ck-tel" placeholder="06 00 00 00 00" type="tel"/></div>
+</div>
+<div><label>Adresse de facturation *</label><input id="ck-fact-adresse" placeholder="Numéro et nom de rue" required="" type="text"/></div>
+<div class="form-row-2">
+<div><label>Code postal *</label><input id="ck-fact-cp" placeholder="31000" required="" type="text"/></div>
+<div><label>Ville *</label><input id="ck-fact-ville" placeholder="Toulouse" required="" type="text"/></div>
+</div>
+<h4 class="ck-section-title">Mode de livraison</h4>
+<div class="delivery-options">
+<label class="delivery-opt" id="opt-retrait">
+<input checked="" name="livraison" onchange="updateDelivery()" type="radio" value="retrait"/>
+<span class="delivery-opt__box">
+<span class="delivery-opt__icon"><i class="ti ti-building-store"></i></span>
+<span>
+<strong>Retrait au siège du club</strong>
+<small>US Toulouse · Gratuit</small>
+</span>
+<span class="delivery-opt__price">Gratuit</span>
+</span>
+</label>
+<label class="delivery-opt" id="opt-livraison">
+<input name="livraison" onchange="updateDelivery()" type="radio" value="livraison"/>
+<span class="delivery-opt__box">
+<span class="delivery-opt__icon"><i class="ti ti-truck-delivery"></i></span>
+<span>
+<strong>Livraison à domicile</strong>
+<small>Colissimo · 3 à 5 jours ouvrés</small>
+</span>
+<span class="delivery-opt__price">10,00 €</span>
+</span>
+</label>
+</div>
+<div id="adresse-wrap" style="display:none">
+<h4 class="ck-section-title">Adresse de livraison</h4>
+<label class="promo-same"><input checked="" id="ck-same-adresse" onchange="toggleSameAddress()" type="checkbox"/> Identique à l'adresse de facturation</label>
+<div id="adresse-fields" style="display:none">
+<div><label>Adresse *</label><input id="ck-adresse" placeholder="Numéro et nom de rue" type="text"/></div>
+<div class="form-row-2">
+<div><label>Code postal *</label><input id="ck-cp" placeholder="31000" type="text"/></div>
+<div><label>Ville *</label><input id="ck-ville" placeholder="Toulouse" type="text"/></div>
+</div>
+</div>
+</div>
+<h4 class="ck-section-title">Code promo</h4>
+<div class="promo-row">
+<input id="ck-promo" placeholder="Entrez votre code" type="text"/>
+<button class="btn btn--outline-brun" onclick="applyPromo()" type="button">Appliquer</button>
+</div>
+<p class="promo-msg" id="promo-msg"></p>
+<div class="ck-total-row">
+<span>Sous-total articles</span><span id="ckSubtotal">0,00 €</span>
+</div>
+<div class="ck-total-row" id="ck-discount-row" style="display:none">
+<span id="ck-discount-label">Remise</span><span id="ckDiscount" style="color:#16a34a">-0,00 €</span>
+</div>
+<div class="ck-total-row" id="ck-shipping-row">
+<span>Frais de livraison</span><span id="ckShipping">Gratuit</span>
+</div>
+<div class="ck-total-row ck-total-row--total">
+<span>Total</span><span id="ckTotal">0,00 €</span>
+</div>
+<button class="btn btn--brun" style="width:100%;justify-content:center;margin-top:8px" type="submit">
+<i class="ti ti-lock" style="margin-right:8px"></i>Payer en toute sécurité
+        </button>
+<p style="text-align:center;font-size:12px;color:var(--gris-muted);margin-top:12px">
+<i class="ti ti-shield-check"></i> Paiement sécurisé via Stripe · SSL
+        </p>
+</form>
+</div>
+</div>
+</div>
