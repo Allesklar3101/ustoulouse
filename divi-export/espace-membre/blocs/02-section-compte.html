@@ -1,0 +1,28 @@
+<section style="padding:80px 0;background:#f4f6f9;font-family:'Poppins',system-ui,sans-serif">
+  <div style="width:90%;max-width:900px;margin:0 auto">
+
+    <!-- Titre de section -->
+    <p style="font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#8b664b;display:flex;align-items:center;gap:10px;margin:0 0 12px">
+      <span style="width:24px;height:2px;background:#8b664b;display:inline-block;border-radius:2px"></span>Mon espace
+    </p>
+    <h2 style="font-size:clamp(28px,3.5vw,42px);font-weight:900;text-transform:uppercase;color:#064e89;line-height:1;margin:0 0 40px;letter-spacing:-.5px">Mon compte</h2>
+
+    <!-- Connexion / Tableau de bord WooCommerce -->
+    <div style="background:#fff;border-radius:20px;padding:40px;box-shadow:0 4px 24px rgba(2,13,24,.07)">
+      [woocommerce_my_account]
+    </div>
+
+    <!-- Cotisations (plugin ust-paiements) -->
+    <div style="margin-top:48px">
+      <h3 style="font-size:20px;font-weight:800;color:#064e89;margin:0 0 24px">Adhérer / Renouveler</h3>
+      [ust_cotisations]
+    </div>
+
+    <!-- Dons (plugin ust-paiements) -->
+    <div style="margin-top:48px">
+      <h3 style="font-size:20px;font-weight:800;color:#064e89;margin:0 0 24px">Faire un don</h3>
+      [ust_don montants="10,20,50,100"]
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,21 @@
+<!-- 
+  BOUTIQUE — À REMPLACER PAR WOOCOMMERCE
+  
+  Ne pas utiliser les blocs HTML de la boutique statique.
+  À la place :
+  
+  1. WooCommerce crée automatiquement une page "Boutique" lors de son installation.
+  2. Dans Divi, édite cette page et ajoute une Section avec ce contenu :
+-->
+
+<!-- BLOC HERO BOUTIQUE (02-section-1.html) → colle-le normalement -->
+<!-- PUIS pour afficher les produits, ajoute un nouveau module Code avec : -->
+
+<section style="padding:60px 0;background:#f4f6f9;font-family:'Poppins',system-ui,sans-serif">
+  <div style="width:90%;max-width:1200px;margin:0 auto">
+    [woocommerce_shop]
+  </div>
+</section>
+
+<!-- Le shortcode [woocommerce_shop] affiche tous les produits WooCommerce avec leur prix, 
+     bouton Ajouter au panier, etc. Le style vient de WooCommerce + ton thème Divi. -->
